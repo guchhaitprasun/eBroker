@@ -13,5 +13,9 @@
     <PackageReference Include="Swashbuckle.AspNetCore.Annotations" Version="6.2.3" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\eBroker.Business\eBroker.Business.csproj" />
+  </ItemGroup>
+
 
 </Project>

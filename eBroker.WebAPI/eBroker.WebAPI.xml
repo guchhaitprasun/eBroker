@@ -9,10 +9,18 @@
             Accounts APIs Implementation
             </summary>
         </member>
-        <member name="M:eBroker.WebAPI.Controllers.AccountsController.Get">
+        <member name="M:eBroker.WebAPI.Controllers.AccountsController.GetUserAccountByDmatID(System.String)">
             <summary>
-            Dummy API
+            Get account detials by DMAT Number 
             </summary>
+            <param name="dmatID"></param>
+            <returns></returns>
+        </member>
+        <member name="M:eBroker.WebAPI.Controllers.AccountsController.AddFundsInDMATAccount(eBroker.Shared.Helpers.Fund)">
+            <summary>
+            Add Funds to the DMAT Account (Above 1L processing charges 0.05%)
+            </summary>
+            <param name="fund"></param>
             <returns></returns>
         </member>
         <member name="T:eBroker.WebAPI.Controllers.TradeController">
@@ -20,10 +28,24 @@
             Trading APIs Implementation
             </summary>
         </member>
-        <member name="M:eBroker.WebAPI.Controllers.TradeController.Get">
+        <member name="M:eBroker.WebAPI.Controllers.TradeController.GetAllStocks">
             <summary>
-            Dummy API
+            Fetch all the acive and available stocks in the market 
             </summary>
+            <returns></returns>
+        </member>
+        <member name="M:eBroker.WebAPI.Controllers.TradeController.BuyStocks(eBroker.Shared.Helpers.Trade)">
+            <summary>
+            Buy Equity between 9AM to 3PM
+            </summary>
+            <param name="stockDetials"></param>
+            <returns></returns>
+        </member>
+        <member name="M:eBroker.WebAPI.Controllers.TradeController.SellStocks(eBroker.Shared.Helpers.Trade)">
+            <summary>
+            Sell Equity between 9AM to 3PM after deducing brokerage (0.05%, min 20rs)
+            </summary>
+            <param name="stockDetails"></param>
             <returns></returns>
         </member>
         <member name="T:eBroker.WebAPI.Controllers.UserController">
@@ -31,9 +53,15 @@
             User APIs Implementation
             </summary>
         </member>
-        <member name="M:eBroker.WebAPI.Controllers.UserController.Get">
+        <member name="M:eBroker.WebAPI.Controllers.UserController.LoginUser(eBroker.Shared.DTOs.UserDTO)">
             <summary>
-            Dummy API
+            User Authentication (pass email and password only in payload)
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:eBroker.WebAPI.Controllers.UserController.GetUserPortfolio(System.Int32)">
+            <summary>
+            Get List of stocks acquired by user
             </summary>
             <returns></returns>
         </member>

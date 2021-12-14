@@ -1555,6 +1555,16 @@
         "runtime": {
           "lib/netstandard1.3/System.Xml.XmlSerializer.dll": {}
         }
+      },
+      "eBroker.Shared/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "compile": {
+          "bin/placeholder/eBroker.Shared.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/eBroker.Shared.dll": {}
+        }
       }
     }
   },
@@ -5850,13 +5860,19 @@
         "system.xml.xmlserializer.4.3.0.nupkg.sha512",
         "system.xml.xmlserializer.nuspec"
       ]
+    },
+    "eBroker.Shared/1.0.0": {
+      "type": "project",
+      "path": "../eBroker.Shared/eBroker.Shared.csproj",
+      "msbuildProject": "../eBroker.Shared/eBroker.Shared.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
       "Microsoft.EntityFrameworkCore.SqlServer >= 3.1.21",
       "Microsoft.EntityFrameworkCore.Tools >= 3.1.21",
-      "Microsoft.Extensions.Configuration.Json >= 3.1.21"
+      "Microsoft.Extensions.Configuration.Json >= 3.1.21",
+      "eBroker.Shared >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -5885,7 +5901,11 @@
       "frameworks": {
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
-          "projectReferences": {}
+          "projectReferences": {
+            "D:\\NAGP\\G_UnitTesting\\HomeAssignment\\eBroker\\eBroker.Shared\\eBroker.Shared.csproj": {
+              "projectPath": "D:\\NAGP\\G_UnitTesting\\HomeAssignment\\eBroker\\eBroker.Shared\\eBroker.Shared.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

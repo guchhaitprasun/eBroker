@@ -1,4 +1,7 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using eBroker.Business;
+using eBroker.Shared.DTOs;
+using eBroker.Shared.Helpers;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -15,13 +18,37 @@ namespace eBroker.WebAPI.Controllers
     public class AccountsController : ControllerBase
     {
         /// <summary>
-        /// Dummy API
+        /// Get account detials by DMAT Number 
         /// </summary>
+        /// <param name="dmatID"></param>
         /// <returns></returns>
-        [HttpGet, Route("Get")]
-        public IActionResult Get()
+        [HttpGet, Route("Get/getAllAccountDetailsByDMATNumber/{dmatID}")]
+        public IActionResult GetUserAccountByDmatID(string dmatID)
         {
-            return Ok();
+            AccountBDC accountBDC = new AccountBDC();
+            DataContainer<AccountDTO> accounts = accountBDC.GetAccountDetailsByDematID(dmatID);
+
+            if (accounts.isValidData && accounts.Data.AccountId > 0)
+            {
+                return Ok(accounts.Data);
+            }
+            else
+            {
+                return BadRequest(accounts.Message);
+            }
+        }
+
+        /// <summary>
+        /// Add Funds to the DMAT Account (Above 1L processing charges 0.05%)
+        /// </summary>
+        /// <param name="fund"></param>
+        /// <returns></returns>
+        [HttpPut, Route("Get/addFunds")]
+        public IActionResult AddFundsInDMATAccount(Fund fund)
+        {
+            AccountBDC accountBDC = new AccountBDC();
+            DataContainer<bool> response = accountBDC.AddFunds(fund);
+            return Ok(response.Message);
         }
     }
 }

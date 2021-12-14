@@ -4,4 +4,9 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\eBroker.Data\eBroker.Data.csproj" />
+    <ProjectReference Include="..\eBroker.Shared\eBroker.Shared.csproj" />
+  </ItemGroup>
+
 </Project>
