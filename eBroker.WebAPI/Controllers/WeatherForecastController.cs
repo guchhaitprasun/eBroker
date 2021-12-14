@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace eBroker.WebAPI.Controllers
 {
+    /// <summary>
+    /// Controller Decription
+    /// </summary>
     [ApiController]
     [Route("[controller]")]
     public class WeatherForecastController : ControllerBase

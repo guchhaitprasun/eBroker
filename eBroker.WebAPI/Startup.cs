@@ -7,6 +7,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -25,6 +26,23 @@ namespace eBroker.WebAPI
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddHttpClient();
+            services.AddMvc();
+
+            //Addition of Swagger Documentation
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc(name: "v1", new Microsoft.OpenApi.Models.OpenApiInfo
+                {
+                    Title = "eBorker API",
+                    Version = "v1"
+                });
+
+
+
+                var xmlFilename = Path.Combine(System.AppContext.BaseDirectory, "eBroker.WebAPI.xml");
+                c.IncludeXmlComments(xmlFilename);
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -32,6 +50,8 @@ namespace eBroker.WebAPI
         {
             if (env.IsDevelopment())
             {
+                app.UseSwagger();
+                app.UseSwaggerUI();
                 app.UseDeveloperExceptionPage();
             }
 
@@ -42,6 +62,11 @@ namespace eBroker.WebAPI
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+            });
+
+            app.UseSwagger();
+            app.UseSwaggerUI(c => {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "NAGP eBroker APIs");
             });
         }
     }

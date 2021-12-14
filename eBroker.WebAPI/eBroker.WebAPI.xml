@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>eBroker.WebAPI</name>
+    </assembly>
+    <members>
+        <member name="T:eBroker.WebAPI.Controllers.WeatherForecastController">
+            <summary>
+            Controller Decription
+            </summary>
+        </member>
+    </members>
+</doc>
