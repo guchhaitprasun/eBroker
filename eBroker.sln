@@ -3,7 +3,23 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31410.357
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eBroker.WebAPI", "eBroker.WebAPI\eBroker.WebAPI.csproj", "{D4ED1019-0BA3-4739-8068-3F88ECC93037}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "eBroker.WebAPI", "eBroker.WebAPI\eBroker.WebAPI.csproj", "{D4ED1019-0BA3-4739-8068-3F88ECC93037}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1. Presentation", "1. Presentation", "{4A6F37C1-A7CF-4A47-9382-03EBCF687716}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2. Business", "2. Business", "{55C2B54A-BA1A-42F0-8363-821925DB7201}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3. Data", "3. Data", "{FC05BB89-CFE3-4493-80F3-12F8AF913FC8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{BEAFEE1D-7ED6-4BE0-94E6-E460AC23F0C7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eBroker.Business", "eBroker.Business\eBroker.Business.csproj", "{E5B0BBA3-7423-4A86-8456-06DED815F6B6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eBroker.DAL", "eBroker.DAL\eBroker.DAL.csproj", "{5EB67290-193A-41C4-A61C-BACE03D892C2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eBroker.Data", "eBroker.Data\eBroker.Data.csproj", "{CCFE0BF7-58AE-4D7F-B545-8475459D3CB6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eBroker.Shared", "eBroker.Shared\eBroker.Shared.csproj", "{32C72DDB-2BAA-404C-A166-06009D795314}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +31,22 @@ Global
 		{D4ED1019-0BA3-4739-8068-3F88ECC93037}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D4ED1019-0BA3-4739-8068-3F88ECC93037}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D4ED1019-0BA3-4739-8068-3F88ECC93037}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E5B0BBA3-7423-4A86-8456-06DED815F6B6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E5B0BBA3-7423-4A86-8456-06DED815F6B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E5B0BBA3-7423-4A86-8456-06DED815F6B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E5B0BBA3-7423-4A86-8456-06DED815F6B6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5EB67290-193A-41C4-A61C-BACE03D892C2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5EB67290-193A-41C4-A61C-BACE03D892C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5EB67290-193A-41C4-A61C-BACE03D892C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5EB67290-193A-41C4-A61C-BACE03D892C2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CCFE0BF7-58AE-4D7F-B545-8475459D3CB6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CCFE0BF7-58AE-4D7F-B545-8475459D3CB6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CCFE0BF7-58AE-4D7F-B545-8475459D3CB6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CCFE0BF7-58AE-4D7F-B545-8475459D3CB6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{32C72DDB-2BAA-404C-A166-06009D795314}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{32C72DDB-2BAA-404C-A166-06009D795314}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{32C72DDB-2BAA-404C-A166-06009D795314}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{32C72DDB-2BAA-404C-A166-06009D795314}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
