@@ -4,10 +4,38 @@
         <name>eBroker.WebAPI</name>
     </assembly>
     <members>
-        <member name="T:eBroker.WebAPI.Controllers.WeatherForecastController">
+        <member name="T:eBroker.WebAPI.Controllers.AccountsController">
             <summary>
-            Controller Decription
+            Accounts APIs Implementation
             </summary>
+        </member>
+        <member name="M:eBroker.WebAPI.Controllers.AccountsController.Get">
+            <summary>
+            Dummy API
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:eBroker.WebAPI.Controllers.TradeController">
+            <summary>
+            Trading APIs Implementation
+            </summary>
+        </member>
+        <member name="M:eBroker.WebAPI.Controllers.TradeController.Get">
+            <summary>
+            Dummy API
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:eBroker.WebAPI.Controllers.UserController">
+            <summary>
+            User APIs Implementation
+            </summary>
+        </member>
+        <member name="M:eBroker.WebAPI.Controllers.UserController.Get">
+            <summary>
+            Dummy API
+            </summary>
+            <returns></returns>
         </member>
     </members>
 </doc>
