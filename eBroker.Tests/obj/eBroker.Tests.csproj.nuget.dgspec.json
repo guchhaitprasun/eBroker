@@ -1,0 +1,408 @@
+{
+  "format": 1,
+  "restore": {
+    "D:\\NAGP\\G_UnitTesting\\HomeAssignment\\eBroker\\eBroker.Tests\\eBroker.Tests.csproj": {}
+  },
+  "projects": {
+    "D:\\NAGP\\G_UnitTesting\\HomeAssignment\\eBroker\\eBroker.Business\\eBroker.Business.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\NAGP\\G_UnitTesting\\HomeAssignment\\eBroker\\eBroker.Business\\eBroker.Business.csproj",
+        "projectName": "eBroker.Business",
+        "projectPath": "D:\\NAGP\\G_UnitTesting\\HomeAssignment\\eBroker\\eBroker.Business\\eBroker.Business.csproj",
+        "packagesPath": "C:\\Users\\prasunguchhait.NAGARRO\\.nuget\\packages\\",
+        "outputPath": "D:\\NAGP\\G_UnitTesting\\HomeAssignment\\eBroker\\eBroker.Business\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\prasunguchhait.NAGARRO\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
+            "projectReferences": {
+              "D:\\NAGP\\G_UnitTesting\\HomeAssignment\\eBroker\\eBroker.DAL\\eBroker.DAL.csproj": {
+                "projectPath": "D:\\NAGP\\G_UnitTesting\\HomeAssignment\\eBroker\\eBroker.DAL\\eBroker.DAL.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.303\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\NAGP\\G_UnitTesting\\HomeAssignment\\eBroker\\eBroker.DAL\\eBroker.DAL.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\NAGP\\G_UnitTesting\\HomeAssignment\\eBroker\\eBroker.DAL\\eBroker.DAL.csproj",
+        "projectName": "eBroker.DAL",
+        "projectPath": "D:\\NAGP\\G_UnitTesting\\HomeAssignment\\eBroker\\eBroker.DAL\\eBroker.DAL.csproj",
+        "packagesPath": "C:\\Users\\prasunguchhait.NAGARRO\\.nuget\\packages\\",
+        "outputPath": "D:\\NAGP\\G_UnitTesting\\HomeAssignment\\eBroker\\eBroker.DAL\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\prasunguchhait.NAGARRO\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
+            "projectReferences": {
+              "D:\\NAGP\\G_UnitTesting\\HomeAssignment\\eBroker\\eBroker.Data\\eBroker.Data.csproj": {
+                "projectPath": "D:\\NAGP\\G_UnitTesting\\HomeAssignment\\eBroker\\eBroker.Data\\eBroker.Data.csproj"
+              },
+              "D:\\NAGP\\G_UnitTesting\\HomeAssignment\\eBroker\\eBroker.Shared\\eBroker.Shared.csproj": {
+                "projectPath": "D:\\NAGP\\G_UnitTesting\\HomeAssignment\\eBroker\\eBroker.Shared\\eBroker.Shared.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.303\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\NAGP\\G_UnitTesting\\HomeAssignment\\eBroker\\eBroker.Data\\eBroker.Data.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\NAGP\\G_UnitTesting\\HomeAssignment\\eBroker\\eBroker.Data\\eBroker.Data.csproj",
+        "projectName": "eBroker.Data",
+        "projectPath": "D:\\NAGP\\G_UnitTesting\\HomeAssignment\\eBroker\\eBroker.Data\\eBroker.Data.csproj",
+        "packagesPath": "C:\\Users\\prasunguchhait.NAGARRO\\.nuget\\packages\\",
+        "outputPath": "D:\\NAGP\\G_UnitTesting\\HomeAssignment\\eBroker\\eBroker.Data\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\prasunguchhait.NAGARRO\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
+            "projectReferences": {
+              "D:\\NAGP\\G_UnitTesting\\HomeAssignment\\eBroker\\eBroker.Shared\\eBroker.Shared.csproj": {
+                "projectPath": "D:\\NAGP\\G_UnitTesting\\HomeAssignment\\eBroker\\eBroker.Shared\\eBroker.Shared.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[3.1.21, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[3.1.21, )"
+            },
+            "Microsoft.Extensions.Configuration.Json": {
+              "target": "Package",
+              "version": "[3.1.21, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.303\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\NAGP\\G_UnitTesting\\HomeAssignment\\eBroker\\eBroker.Shared\\eBroker.Shared.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\NAGP\\G_UnitTesting\\HomeAssignment\\eBroker\\eBroker.Shared\\eBroker.Shared.csproj",
+        "projectName": "eBroker.Shared",
+        "projectPath": "D:\\NAGP\\G_UnitTesting\\HomeAssignment\\eBroker\\eBroker.Shared\\eBroker.Shared.csproj",
+        "packagesPath": "C:\\Users\\prasunguchhait.NAGARRO\\.nuget\\packages\\",
+        "outputPath": "D:\\NAGP\\G_UnitTesting\\HomeAssignment\\eBroker\\eBroker.Shared\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\prasunguchhait.NAGARRO\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.303\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\NAGP\\G_UnitTesting\\HomeAssignment\\eBroker\\eBroker.Tests\\eBroker.Tests.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\NAGP\\G_UnitTesting\\HomeAssignment\\eBroker\\eBroker.Tests\\eBroker.Tests.csproj",
+        "projectName": "eBroker.Tests",
+        "projectPath": "D:\\NAGP\\G_UnitTesting\\HomeAssignment\\eBroker\\eBroker.Tests\\eBroker.Tests.csproj",
+        "packagesPath": "C:\\Users\\prasunguchhait.NAGARRO\\.nuget\\packages\\",
+        "outputPath": "D:\\NAGP\\G_UnitTesting\\HomeAssignment\\eBroker\\eBroker.Tests\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\prasunguchhait.NAGARRO\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
+            "projectReferences": {
+              "D:\\NAGP\\G_UnitTesting\\HomeAssignment\\eBroker\\eBroker.WebAPI\\eBroker.WebAPI.csproj": {
+                "projectPath": "D:\\NAGP\\G_UnitTesting\\HomeAssignment\\eBroker\\eBroker.WebAPI\\eBroker.WebAPI.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
+          "dependencies": {
+            "Microsoft.NET.Test.Sdk": {
+              "target": "Package",
+              "version": "[16.5.0, )"
+            },
+            "coverlet.collector": {
+              "target": "Package",
+              "version": "[1.2.0, )"
+            },
+            "xunit": {
+              "target": "Package",
+              "version": "[2.4.0, )"
+            },
+            "xunit.runner.visualstudio": {
+              "target": "Package",
+              "version": "[2.4.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.303\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\NAGP\\G_UnitTesting\\HomeAssignment\\eBroker\\eBroker.WebAPI\\eBroker.WebAPI.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\NAGP\\G_UnitTesting\\HomeAssignment\\eBroker\\eBroker.WebAPI\\eBroker.WebAPI.csproj",
+        "projectName": "eBroker.WebAPI",
+        "projectPath": "D:\\NAGP\\G_UnitTesting\\HomeAssignment\\eBroker\\eBroker.WebAPI\\eBroker.WebAPI.csproj",
+        "packagesPath": "C:\\Users\\prasunguchhait.NAGARRO\\.nuget\\packages\\",
+        "outputPath": "D:\\NAGP\\G_UnitTesting\\HomeAssignment\\eBroker\\eBroker.WebAPI\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\prasunguchhait.NAGARRO\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
+            "projectReferences": {
+              "D:\\NAGP\\G_UnitTesting\\HomeAssignment\\eBroker\\eBroker.Business\\eBroker.Business.csproj": {
+                "projectPath": "D:\\NAGP\\G_UnitTesting\\HomeAssignment\\eBroker\\eBroker.Business\\eBroker.Business.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
+          "dependencies": {
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[6.2.3, )"
+            },
+            "Swashbuckle.AspNetCore.Annotations": {
+              "target": "Package",
+              "version": "[6.2.3, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.NETCore.App.Host.win-x64",
+              "version": "[3.1.18, 3.1.18]"
+            }
+          ],
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.303\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

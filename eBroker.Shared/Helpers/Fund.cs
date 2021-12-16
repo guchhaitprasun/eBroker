@@ -9,7 +9,7 @@ namespace eBroker.Shared.Helpers
     {
 
         private decimal amount;
-        private decimal processingCharges = 0;
+        private decimal processingCharges;
 
         [DefaultValue("1234-5678-9012-3456")] 
         public string DmatNumber { get; set; }
@@ -24,7 +24,11 @@ namespace eBroker.Shared.Helpers
             set
             {
                 if (value > 100000)
-                    amount = value - CalculateProcessingCharges(value);
+                {
+                    processingCharges = CalculateProcessingCharges(value);
+                    amount = value - processingCharges;
+
+                }
                 else
                     amount = value;
             }
@@ -37,13 +41,12 @@ namespace eBroker.Shared.Helpers
             }
         }
 
-        private decimal CalculateProcessingCharges(decimal amount)
+        public static decimal CalculateProcessingCharges(decimal amount)
         {
             decimal retunValue = 0;
             if (amount > 100000)
             {
                 retunValue = amount * (decimal)0.05;
-                this.processingCharges = retunValue;
             }
 
             return retunValue;

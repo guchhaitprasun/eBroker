@@ -34,7 +34,7 @@ namespace eBroker.WebAPI.Controllers
             }
             else
             {
-                return BadRequest(accounts.Message);
+                return BadRequest(new AccountDTO());
             }
         }
 
