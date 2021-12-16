@@ -1,4 +1,6 @@
-﻿using eBroker.DAL;
+﻿using eBroker.Business.Interface;
+using eBroker.DAL;
+using eBroker.DAL.Interface;
 using eBroker.Shared.DTOs;
 using eBroker.Shared.Enums;
 using eBroker.Shared.Helpers;
@@ -9,7 +11,7 @@ using static eBroker.Shared.Enums.Constants;
 
 namespace eBroker.Business
 {
-    public class TradeBDC
+    public class TradeBDC : ITradeBDC
     {
         private readonly TimeSpan OpenTime = new TimeSpan(9, 0, 0);
         private readonly TimeSpan CloseTime = new TimeSpan(15, 0, 0);
@@ -19,7 +21,7 @@ namespace eBroker.Business
             DataContainer<IList<StockDTO>> returnVal = new DataContainer<IList<StockDTO>>();
             try
             {
-                TradeDAC stockDac = new TradeDAC();
+                ITradeDAC stockDac = new TradeDAC();
                 returnVal = stockDac.GetAllStocks();
             }
             catch (Exception ex)
@@ -101,7 +103,7 @@ namespace eBroker.Business
 
         private DataContainer<StockDTO> GetStockByID(int stockID)
         {
-            TradeDAC tradeDac = new TradeDAC();
+            ITradeDAC tradeDac = new TradeDAC();
             return tradeDac.GetStockByID(stockID);
         }
 
@@ -136,7 +138,7 @@ namespace eBroker.Business
         private DataContainer<bool> BuyStocks(Trade tradeDetails, StockDTO stockDetail, AccountDTO accountDetails)
         {
             DataContainer<bool> returnValue = new DataContainer<bool>();
-            TradeDAC tradeDAC = new TradeDAC();
+            ITradeDAC tradeDAC = new TradeDAC();
             decimal purchaseAmountRequired = stockDetail.Price * (decimal)tradeDetails.EquityQuantity;
 
             if(accountDetails.AvailableBalance >= purchaseAmountRequired)
@@ -156,7 +158,7 @@ namespace eBroker.Business
 
         private DataContainer<bool> SellStocks(Trade tradeDetails, StockDTO stockDetail, AccountDTO accountDetails)
         {
-            TradeDAC tradeDAC = new TradeDAC();
+            ITradeDAC tradeDAC = new TradeDAC();
             DataContainer<bool> returnValue = new DataContainer<bool>();
 
             if(tradeDAC.IsStockInUserPortfolio(accountDetails.UserId, tradeDetails.StockID).Data)

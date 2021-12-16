@@ -1,4 +1,5 @@
 ﻿using eBroker.Business;
+using eBroker.Business.Interface;
 using eBroker.Shared.DTOs;
 using eBroker.Shared.Helpers;
 using Microsoft.AspNetCore.Http;
@@ -25,7 +26,7 @@ namespace eBroker.WebAPI.Controllers
         [HttpGet, Route("Get/getAllAccountDetailsByDMATNumber/{dmatID}")]
         public IActionResult GetUserAccountByDmatID(string dmatID)
         {
-            AccountBDC accountBDC = new AccountBDC();
+            IAccountBDC accountBDC = new AccountBDC();
             DataContainer<AccountDTO> accounts = accountBDC.GetAccountDetailsByDematID(dmatID);
 
             if (accounts.isValidData && accounts.Data.AccountId > 0)
@@ -46,7 +47,7 @@ namespace eBroker.WebAPI.Controllers
         [HttpPut, Route("Get/addFunds")]
         public IActionResult AddFundsInDMATAccount(Fund fund)
         {
-            AccountBDC accountBDC = new AccountBDC();
+            IAccountBDC accountBDC = new AccountBDC();
             DataContainer<bool> response = accountBDC.AddFunds(fund);
             return Ok(response.Message);
         }

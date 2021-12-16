@@ -1,4 +1,5 @@
-﻿using eBroker.Data.Database;
+﻿using eBroker.DAL.Interface;
+using eBroker.Data.Database;
 using eBroker.Data.Mapper;
 using eBroker.Shared.DTOs;
 using eBroker.Shared.Enums;
@@ -10,7 +11,7 @@ using System.Text;
 
 namespace eBroker.DAL
 {
-    public class TradeDAC
+    public class TradeDAC : ITradeDAC
     {
         private ObjectMapper mapper = null;
 
@@ -125,9 +126,6 @@ namespace eBroker.DAL
         {
             return UpdateAccountDetails(account, -sellingGainAmount) && AddTradeHistory(account, trade, sellingGainAmount, tradeType) && AddUpdateUserPortfolioAfterSell(account, trade, sellingGainAmount + brokerage);
         }
-
-
-
 
         #region Private Helper Functions
         private IList<StockDTO> MapStockList(IList<Stock> stockList)

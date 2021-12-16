@@ -1,4 +1,5 @@
-﻿using eBroker.Data.Database;
+﻿using eBroker.DAL.Interface;
+using eBroker.Data.Database;
 using eBroker.Data.Mapper;
 using eBroker.Shared.DTOs;
 using eBroker.Shared.Enums;
@@ -11,7 +12,7 @@ using System.Text;
 
 namespace eBroker.DAL
 {
-    public class UserDAC
+    public class UserDAC : IUserDAC
     {
         private ObjectMapper mapper = null;
         public UserDAC()

@@ -5,17 +5,19 @@ using eBroker.Shared.DTOs;
 using eBroker.Shared.Helpers;
 using eBroker.DAL;
 using eBroker.Shared.Enums;
+using eBroker.DAL.Interface;
+using eBroker.Business.Interface;
 
 namespace eBroker.Business
 {
-    public class UserBDC
+    public class UserBDC : IUserBDC
     {
         public DataContainer<UserDTO> AuthentictaeUser(UserDTO user)
         {
             DataContainer<UserDTO> returnValue = new DataContainer<UserDTO>();
             try
             {
-                UserDAC userDAC = new UserDAC();
+                IUserDAC userDAC = new UserDAC();
                 returnValue = userDAC.AuthenticatUser(user);
             }
             catch (Exception ex)
@@ -33,7 +35,7 @@ namespace eBroker.Business
             DataContainer<UserDTO> returnValue = new DataContainer<UserDTO>();
             try
             {
-                UserDAC userDAC = new UserDAC();
+                IUserDAC userDAC = new UserDAC();
                 returnValue = userDAC.GetUserPortfolio(userId);
             }
             catch (Exception ex)

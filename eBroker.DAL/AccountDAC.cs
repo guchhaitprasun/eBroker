@@ -1,4 +1,5 @@
-﻿using eBroker.Data.Database;
+﻿using eBroker.DAL.Interface;
+using eBroker.Data.Database;
 using eBroker.Data.Mapper;
 using eBroker.Shared.DTOs;
 using eBroker.Shared.Enums;
@@ -13,7 +14,7 @@ namespace eBroker.DAL
     /// <summary>
     /// Data Access Center for Accounts
     /// </summary>
-    public class AccountDAC
+    public class AccountDAC : IAccountDAC
     {
         private ObjectMapper Mapper = null;
 
