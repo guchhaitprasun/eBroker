@@ -17,8 +17,8 @@ namespace eBroker.DAL.Interface
 
         public DataContainer<bool> IsStockQuantitySufficeForSell(int userId, int stockId, int quantityToSell);
 
-        public bool ProcessPurchase(AccountDTO account, Trade trade, decimal purchaseAmount, Constants.TradeType tradeType);
+        public bool ProcessPurchase(AccountDTO account, Trade trade, decimal purchaseAmount, Constants.TradeType tradeType, DateTime tradeTime);
 
-        public bool ProcessSelling(StockDTO stocks, AccountDTO account, Trade trade, decimal sellingGainAmount, decimal brokerage, Constants.TradeType tradeType);
+        public bool ProcessSelling(StockDTO stocks, AccountDTO account, Trade trade, decimal sellingGainAmount, decimal brokerage, Constants.TradeType tradeType, DateTime tradeTime);
     }
 }

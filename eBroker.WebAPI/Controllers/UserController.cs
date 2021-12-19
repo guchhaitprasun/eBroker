@@ -7,6 +7,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using eBroker.Business;
 using eBroker.Shared.Helpers;
+using eBroker.Business.Interface;
 
 namespace eBroker.WebAPI.Controllers
 {
@@ -17,6 +18,16 @@ namespace eBroker.WebAPI.Controllers
     [ApiController]
     public class UserController : ControllerBase
     {
+        private static IUserBDC userBDC;
+
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        public UserController()
+        {
+            userBDC = new UserBDC();
+        }
+
         /// <summary>
         /// User Authentication (pass email and password only in payload)
         /// </summary>
@@ -24,9 +35,7 @@ namespace eBroker.WebAPI.Controllers
         [HttpPost, Route("Post/login")]
         public IActionResult LoginUser(UserDTO user)
         {
-            UserBDC userBDC = new UserBDC();
             DataContainer<UserDTO> authenticatedUser = new DataContainer<UserDTO>();
-
             authenticatedUser = userBDC.AuthentictaeUser(user);
 
             if (authenticatedUser.isValidData && authenticatedUser.Data.UserId > 0)
@@ -46,20 +55,14 @@ namespace eBroker.WebAPI.Controllers
         [HttpGet, Route("Get/getUserPortfolioList/{userID}")]
         public IActionResult GetUserPortfolio(int userID)
         {
-            UserBDC userBDC = new UserBDC();
             DataContainer<UserDTO> authenticatedUser = new DataContainer<UserDTO>();
-            if (userID > 0)
+            authenticatedUser = userBDC.GetUserPortfolio(userID);
+            if (authenticatedUser.isValidData)
             {
-                authenticatedUser = userBDC.GetUserPortfolio(userID);
-                if (authenticatedUser.isValidData && authenticatedUser.Data.UserId > 0 && authenticatedUser.Data.UserPortfolioDTOs.Count > 0)
-                {
-                    return Ok(authenticatedUser.Data.UserPortfolioDTOs);
-                }
-
-                return BadRequest("User Portforlio Does not Exist");
+                return Ok(authenticatedUser.Data.UserPortfolioDTOs);
             }
 
-            return BadRequest("User does not exist");
+            return BadRequest(authenticatedUser.Message);
         }
     }
 }

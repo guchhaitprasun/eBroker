@@ -19,11 +19,17 @@ namespace eBroker.Business
             {
                 IUserDAC userDAC = new UserDAC();
                 returnValue = userDAC.AuthenticatUser(user);
+                if (returnValue.isValidData)
+                {
+                    returnValue.Message = Constants.LoginSuccess;
+                }
+                else
+                {
+                    returnValue.Message = Constants.LoginFailed;
+                }
             }
             catch (Exception ex)
             {
-
-                returnValue.isValidData = false;
                 returnValue.Message = Constants.BDCException + ex.Message;
             }
 
@@ -37,11 +43,20 @@ namespace eBroker.Business
             {
                 IUserDAC userDAC = new UserDAC();
                 returnValue = userDAC.GetUserPortfolio(userId);
+
+                if (!returnValue.isValidData)
+                {
+                    returnValue.Message = Constants.UserNotExist;
+                }
+                else if (returnValue.isValidData && returnValue.Data.UserPortfolioDTOs.Count <= 0)
+                {
+                    returnValue.isValidData = false;
+                    returnValue.Message = Constants.PortfolioNotExist;
+                }
+
             }
             catch (Exception ex)
             {
-
-                returnValue.isValidData = false;
                 returnValue.Message = Constants.BDCException + ex.Message;
             }
 

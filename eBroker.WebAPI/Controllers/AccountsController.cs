@@ -18,6 +18,16 @@ namespace eBroker.WebAPI.Controllers
     [ApiController]
     public class AccountsController : ControllerBase
     {
+        private static IAccountBDC accountBDC;
+
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        public AccountsController()
+        {
+            accountBDC = new AccountBDC();
+        }
+
         /// <summary>
         /// Get account detials by DMAT Number 
         /// </summary>
@@ -26,9 +36,7 @@ namespace eBroker.WebAPI.Controllers
         [HttpGet, Route("Get/getAllAccountDetailsByDMATNumber/{dmatID}")]
         public IActionResult GetUserAccountByDmatID(string dmatID)
         {
-            IAccountBDC accountBDC = new AccountBDC();
             DataContainer<AccountDTO> accounts = accountBDC.GetAccountDetailsByDematID(dmatID);
-
             if (accounts.isValidData && accounts.Data.AccountId > 0)
             {
                 return Ok(accounts.Data);
@@ -47,7 +55,6 @@ namespace eBroker.WebAPI.Controllers
         [HttpPut, Route("Get/addFunds")]
         public IActionResult AddFundsInDMATAccount(Fund fund)
         {
-            IAccountBDC accountBDC = new AccountBDC();
             DataContainer<bool> response = accountBDC.AddFunds(fund);
             return Ok(response.Message);
         }

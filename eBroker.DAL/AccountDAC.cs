@@ -4,6 +4,7 @@ using eBroker.Data.Mapper;
 using eBroker.Shared.DTOs;
 using eBroker.Shared.Enums;
 using eBroker.Shared.Helpers;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,26 +18,32 @@ namespace eBroker.DAL
     public class AccountDAC : IAccountDAC
     {
         private ObjectMapper Mapper = null;
+        private EBrokerDbContext dbContext;
 
         public AccountDAC()
         {
             Mapper = new ObjectMapper();
+            dbContext = new EBrokerDbContext();
         }
+
+        public AccountDAC(EBrokerDbContext _dbContext)
+        {
+            Mapper = new ObjectMapper();
+            dbContext = _dbContext;
+        }
+
+ 
         public DataContainer<AccountDTO> GetAccountDetailsByDematID(string dmatNumber)
         {
             DataContainer<AccountDTO> response = new DataContainer<AccountDTO>();
-
             try
             {
-                using (var dbContext = new EBrokerDbContext())
+                var data = dbContext.Account.Where(o => o.DmatAccountNumber == dmatNumber).FirstOrDefault();
+                if (data != null)
                 {
-                    var data = dbContext.Account.Where(o => o.DmatAccountNumber == dmatNumber).FirstOrDefault();
-                    if (data != null)
-                    {
-                        response.Data = Mapper.MapAccountsToAccountsDTO(data);
-                        response.isValidData = true;
-                    }
-                }
+                    response.Data = Mapper.MapAccountsToAccountsDTO(data);
+                    response.isValidData = true;
+                }   
             }
             catch (Exception ex)
             {
@@ -52,19 +59,16 @@ namespace eBroker.DAL
 
             try
             {
-                using (var dbContext = new EBrokerDbContext())
+                var account = dbContext.Account.Where(o => o.DmatAccountNumber == dmatNumber && o.IsActive.HasValue && o.IsActive.Value).FirstOrDefault();
+                if (account != null && account.UserId > 0)
                 {
-                    var account = dbContext.Account.Where(o => o.DmatAccountNumber == dmatNumber && o.IsActive.HasValue && o.IsActive.Value).FirstOrDefault();
-                    if (account != null && account.UserId > 0)
-                    {
-                        account.AvailableBalance = account.AvailableBalance + amount;
-                        response.Data = dbContext.SaveChanges() > 0 ? true : false;
-                        response.isValidData = true;
-                    }
-                    else
-                    {
-                        response.Data = false;
-                    }
+                    account.AvailableBalance = account.AvailableBalance + amount;
+                    response.Data = dbContext.SaveChanges() > 0 ? true : false;
+                    response.isValidData = true;
+                }
+                else
+                {
+                    response.Data = false;
                 }
             }
             catch (Exception ex)

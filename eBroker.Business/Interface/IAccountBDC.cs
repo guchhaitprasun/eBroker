@@ -8,8 +8,8 @@ namespace eBroker.Business.Interface
 {
     public interface IAccountBDC
     {
-        public DataContainer<bool> AddFunds(Fund fund);
+        DataContainer<bool> AddFunds(Fund fund);
 
-        public DataContainer<AccountDTO> GetAccountDetailsByDematID(string dmatNumber);
+        DataContainer<AccountDTO> GetAccountDetailsByDematID(string dmatNumber);
     }
 }

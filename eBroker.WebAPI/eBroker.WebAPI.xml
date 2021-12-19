@@ -9,6 +9,11 @@
             Accounts APIs Implementation
             </summary>
         </member>
+        <member name="M:eBroker.WebAPI.Controllers.AccountsController.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
         <member name="M:eBroker.WebAPI.Controllers.AccountsController.GetUserAccountByDmatID(System.String)">
             <summary>
             Get account detials by DMAT Number 
@@ -27,6 +32,12 @@
             <summary>
             Trading APIs Implementation
             </summary>
+        </member>
+        <member name="M:eBroker.WebAPI.Controllers.TradeController.#ctor(eBroker.Shared.Interface.IDateTimeHelper)">
+            <summary>
+            Constructor With Overload
+            </summary>
+            <param name="dateTimeHelper"></param>
         </member>
         <member name="M:eBroker.WebAPI.Controllers.TradeController.GetAllStocks">
             <summary>
@@ -51,6 +62,11 @@
         <member name="T:eBroker.WebAPI.Controllers.UserController">
             <summary>
             User APIs Implementation
+            </summary>
+        </member>
+        <member name="M:eBroker.WebAPI.Controllers.UserController.#ctor">
+            <summary>
+            Constructor
             </summary>
         </member>
         <member name="M:eBroker.WebAPI.Controllers.UserController.LoginUser(eBroker.Shared.DTOs.UserDTO)">

@@ -27,14 +27,12 @@ namespace eBroker.DAL
             {
                 using (var dbContext = new EBrokerDbContext())
                 {
-                    returnVal.Data = MapStockList(dbContext.Stock.Where(o => o.IsActive.HasValue && o.IsActive.Value).ToList());
-                    if (returnVal.Data.Count > 0)
+                    var data = dbContext.Stock.Where(o => o.IsActive.HasValue && o.IsActive.Value).ToList();
+
+                    if(data != null && data.Count > 0)
                     {
+                        returnVal.Data = MapStockList(data);
                         returnVal.isValidData = true;
-                    }
-                    else
-                    {
-                        returnVal.Message = Constants.StocksNotAvailabe;
                     }
                 }
             }
@@ -117,14 +115,14 @@ namespace eBroker.DAL
 
         }
 
-        public bool ProcessPurchase(AccountDTO account, Trade trade, decimal purchaseAmount, Constants.TradeType tradeType)
+        public bool ProcessPurchase(AccountDTO account, Trade trade, decimal purchaseAmount, Constants.TradeType tradeType, DateTime tradeTime)
         {
-            return UpdateAccountDetails(account, purchaseAmount) && AddTradeHistory(account, trade, purchaseAmount, tradeType) && AddUpdateUserPortfolio(account, trade, purchaseAmount);
+            return UpdateAccountDetails(account, purchaseAmount) && AddTradeHistory(account, trade, purchaseAmount, tradeType, tradeTime) && AddUpdateUserPortfolio(account, trade, purchaseAmount);
         }
 
-        public bool ProcessSelling(StockDTO stocks, AccountDTO account, Trade trade, decimal sellingGainAmount, decimal brokerage, Constants.TradeType tradeType)
+        public bool ProcessSelling(StockDTO stocks, AccountDTO account, Trade trade, decimal sellingGainAmount, decimal brokerage, Constants.TradeType tradeType, DateTime tradeTime)
         {
-            return UpdateAccountDetails(account, -sellingGainAmount) && AddTradeHistory(account, trade, sellingGainAmount, tradeType) && AddUpdateUserPortfolioAfterSell(account, trade, sellingGainAmount + brokerage);
+            return UpdateAccountDetails(account, -sellingGainAmount) && AddTradeHistory(account, trade, sellingGainAmount, tradeType, tradeTime) && AddUpdateUserPortfolioAfterSell(account, trade, sellingGainAmount + brokerage);
         }
 
         #region Private Helper Functions
@@ -159,14 +157,14 @@ namespace eBroker.DAL
             }
         }
 
-        private bool AddTradeHistory(AccountDTO account, Trade trade, decimal purchaseAmount, Constants.TradeType tradeType)
+        private bool AddTradeHistory(AccountDTO account, Trade trade, decimal purchaseAmount, Constants.TradeType tradeType, DateTime tradeTime)
         {
             using (var dbContext = new EBrokerDbContext())
             {
                 TradeHistory details = new TradeHistory();
 
                 details.UserId = account.UserId;
-                details.TradeDate = DateTime.Now;
+                details.TradeDate = tradeTime;
                 details.TradeType = (int)tradeType;
                 details.StockId = trade.StockID;
                 details.StockQty = trade.EquityQuantity;
@@ -189,6 +187,7 @@ namespace eBroker.DAL
                 {
                     portfolio.StockQty = portfolio.StockQty + tradeDetails.EquityQuantity;
                     portfolio.InvestedAmount = portfolio.InvestedAmount + purchaseAmount;
+                    portfolio.IsActive = true;
                 }
                 else
                 {

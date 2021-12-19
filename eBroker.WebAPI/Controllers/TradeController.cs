@@ -1,7 +1,9 @@
 ﻿using eBroker.Business;
+using eBroker.Business.Interface;
 using eBroker.Shared.DTOs;
 using eBroker.Shared.Enums;
 using eBroker.Shared.Helpers;
+using eBroker.Shared.Interface;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -19,6 +21,18 @@ namespace eBroker.WebAPI.Controllers
     [ApiController]
     public class TradeController : ControllerBase
     {
+        private static ITradeBDC tradeBDC;
+
+        /// <summary>
+        /// Constructor With Overload
+        /// </summary>
+        /// <param name="dateTimeHelper"></param>
+        public TradeController(IDateTimeHelper dateTimeHelper = null)
+        {
+            tradeBDC = new TradeBDC(dateTimeHelper);
+        }
+
+
         /// <summary>
         /// Fetch all the acive and available stocks in the market 
         /// </summary>
@@ -26,14 +40,12 @@ namespace eBroker.WebAPI.Controllers
         [HttpGet, Route("Get/allMarketStocks")]
         public IActionResult GetAllStocks()
         {
-            TradeBDC tradeBDC = new TradeBDC();
             DataContainer<IList<StockDTO>> allStocks = tradeBDC.GetAllStocks();
-
-            if (allStocks.isValidData && allStocks.Data.Count > 0)
+            if (allStocks.isValidData)
             {
                 return Ok(allStocks.Data);
             }
-            return BadRequest(Constants.ConnetionIssue);
+            return BadRequest(allStocks.Message);
         }
 
         /// <summary>
@@ -44,8 +56,6 @@ namespace eBroker.WebAPI.Controllers
         [HttpPost, Route("Post/buyEquity")]
         public IActionResult BuyStocks(Trade stockDetials)
         {
-  
-            TradeBDC tradeBDC = new TradeBDC();
             var response = tradeBDC.ValidateAndInitiateTrade(stockDetials, TradeType.Buy);
             if (response.isValidData)
             {
@@ -62,7 +72,6 @@ namespace eBroker.WebAPI.Controllers
         [HttpPost, Route("Post/sellEquity")]
         public IActionResult SellStocks(Trade stockDetails)
         {
-            TradeBDC tradeBDC = new TradeBDC();
             var response = tradeBDC.ValidateAndInitiateTrade(stockDetails, TradeType.Sell);
             if (response.isValidData)
             {

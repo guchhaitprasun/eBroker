@@ -36,6 +36,8 @@ namespace eBroker.Shared.Enums
         public const string EquitySoldSuccess = "Equity Sold Successfully with selling gain Rs.#SELLINGGAIN# and brokerage Rs.#BROKERAGE# (min 20Rs or 0.05% of trade value)";
         public const string FundAddSuccess = "Funds of Rs.#AMOUNT# Added Successfully for DMAT No. #DMATNUMBER# and processing charge of Rs.#PROCESSINGCHARGE# is Applied";
         public const string DMATNotExist = "DMAT No. #DMATNUMBER# is either invalid, in active or Not exist";
+        public const string PortfolioNotExist = "User Portforlio Does not Exist";
+        public const string UserNotExist = "User does not exist";
 
         //Placeholders
         public const string SellingGainPlaceholder = "#SELLINGGAIN#";

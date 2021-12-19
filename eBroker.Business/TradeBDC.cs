@@ -4,6 +4,7 @@ using eBroker.DAL.Interface;
 using eBroker.Shared.DTOs;
 using eBroker.Shared.Enums;
 using eBroker.Shared.Helpers;
+using eBroker.Shared.Interface;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -15,6 +16,19 @@ namespace eBroker.Business
     {
         private readonly TimeSpan OpenTime = new TimeSpan(9, 0, 0);
         private readonly TimeSpan CloseTime = new TimeSpan(15, 0, 0);
+        private IDateTimeHelper _dateTimeHelper;
+
+        public TradeBDC(IDateTimeHelper dateTimeHelper = null)
+        {
+            if(dateTimeHelper != null)
+            {
+                _dateTimeHelper = dateTimeHelper;
+            }
+            else
+            {
+                _dateTimeHelper = new DateTimeHelper();
+            }
+        }
 
         public DataContainer<IList<StockDTO>> GetAllStocks()
         {
@@ -23,6 +37,11 @@ namespace eBroker.Business
             {
                 ITradeDAC stockDac = new TradeDAC();
                 returnVal = stockDac.GetAllStocks();
+
+                if (!returnVal.isValidData)
+                {
+                    returnVal.Message = Constants.StocksNotAvailabe;
+                }
             }
             catch (Exception ex)
             {
@@ -78,7 +97,7 @@ namespace eBroker.Business
 
         private DataContainer<bool> isTradingPossible()
         {
-            DateTime currentDateTime = DateTime.Now;
+            DateTime currentDateTime = _dateTimeHelper.GetDateTimeNow();
             TimeSpan currentTime = currentDateTime.TimeOfDay;
             DataContainer<bool> dataContainer = new DataContainer<bool>();
 
@@ -125,12 +144,6 @@ namespace eBroker.Business
             {
                 returnValue = SellStocks(tradeDetails, stockDetials, accountDetails);
             }
-            else
-            {
-                returnValue.Data = false;
-                returnValue.isValidData = false;
-                returnValue.Message = InavlidOperation;
-            }
 
             return returnValue;
         }
@@ -143,7 +156,7 @@ namespace eBroker.Business
 
             if(accountDetails.AvailableBalance >= purchaseAmountRequired)
             {
-                returnValue.Data = tradeDAC.ProcessPurchase(accountDetails, tradeDetails, purchaseAmountRequired, TradeType.Buy);
+                returnValue.Data = tradeDAC.ProcessPurchase(accountDetails, tradeDetails, purchaseAmountRequired, TradeType.Buy, _dateTimeHelper.GetDateTimeNow());
                 returnValue.Message = returnValue.Data ? PurchaseSuccess : PurchaseFailed;
             }
             else
@@ -169,7 +182,7 @@ namespace eBroker.Business
                     decimal brokerage = calculateBrokrage(sellingGain);
                     sellingGain = sellingGain - brokerage;
 
-                    returnValue.Data = tradeDAC.ProcessSelling(stockDetail, accountDetails, tradeDetails, sellingGain, brokerage, TradeType.Sell);
+                    returnValue.Data = tradeDAC.ProcessSelling(stockDetail, accountDetails, tradeDetails, sellingGain, brokerage, TradeType.Sell, _dateTimeHelper.GetDateTimeNow());
                     returnValue.Message = returnValue.Data ? EquitySoldSuccess.Replace(SellingGainPlaceholder, sellingGain.ToString()).Replace(BrokeragePlaceholder, brokerage.ToString()) : SellingFailed;
                 }
                 else

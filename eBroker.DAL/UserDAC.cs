@@ -14,10 +14,19 @@ namespace eBroker.DAL
 {
     public class UserDAC : IUserDAC
     {
-        private ObjectMapper mapper = null;
+        private ObjectMapper mapper;
+        private EBrokerDbContext dbContext;
+
         public UserDAC()
         {
             mapper = new ObjectMapper();
+            dbContext = new EBrokerDbContext();
+        }
+
+        public UserDAC(EBrokerDbContext _dbContext)
+        {
+            mapper = new ObjectMapper();
+            dbContext = _dbContext;
         }
 
 
@@ -27,19 +36,10 @@ namespace eBroker.DAL
 
             try
             {
-                using (var dbContext = new EBrokerDbContext())
+                authUser.Data = mapper.MapUserToUserDTO(dbContext.User.Where(o => o.EmailAddress == user.EmailAddress && o.Password == user.Password).FirstOrDefault());
+                if (authUser.Data != null && authUser.Data.UserId > 0)
                 {
-                    authUser.Data = mapper.MapUserToUserDTO(dbContext.User.Where(o => o.EmailAddress == user.EmailAddress && o.Password == user.Password).FirstOrDefault());
-                    if(authUser.Data != null && authUser.Data.UserId > 0)
-                    {
-                        authUser.isValidData = true;
-                        authUser.Message = Constants.LoginSuccess;
-                    }
-                    else
-                    {
-                        authUser.Message = Constants.LoginFailed;
-                    }
-                    
+                    authUser.isValidData = true;
                 }
             }
             catch (Exception ex)
@@ -56,18 +56,11 @@ namespace eBroker.DAL
 
             try
             {
-                using (var dbContext = new EBrokerDbContext())
+                User user = dbContext.User.Include("UserPortfolio").Include("UserPortfolio.Stock").FirstOrDefault(c => c.UserId == userId);
+                if (user != null)
                 {
-                    User user = dbContext.User.Include("UserPortfolio").Include("UserPortfolio.Stock").FirstOrDefault(c => c.UserId == userId);
-                    if (user != null && user.UserId > 0)
-                    {
-                        userDetails.Data = mapper.MapUserToUserDTO(user);
-                        userDetails.isValidData = true;
-                    }
-                    else
-                    {
-                        userDetails.Data = new UserDTO();
-                    }
+                    userDetails.Data = mapper.MapUserToUserDTO(user);
+                    userDetails.isValidData = true;
                 }
             }
             catch (Exception ex)
