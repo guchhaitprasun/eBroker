@@ -7,11 +7,18 @@ using System.Text;
 
 namespace eBroker.Tests.InMemoryData
 {
+    /// <summary>
+    /// Class to use In memory database for partial testing 
+    /// </summary>
     public class InMemoryDBContext : IDisposable
     {
         public DbContextOptions<EBrokerDbContext> Options { get { return options; } }
         private DbContextOptions<EBrokerDbContext> options;
         private EBrokerDbContext _context;
+        
+        /// <summary>
+        /// Constructor
+        /// </summary>
         public InMemoryDBContext()
         {
             //options = new DbContextOptionsBuilder<EBrokerDbContext>().UseInMemoryDatabase(databaseName: "EBrokerInMemoryContext").Options;
@@ -74,6 +81,9 @@ namespace eBroker.Tests.InMemoryData
             }
         }
     
+        /// <summary>
+        /// Object disposal
+        /// </summary>
         public void Dispose()
         {
             _context.Database.EnsureDeleted();

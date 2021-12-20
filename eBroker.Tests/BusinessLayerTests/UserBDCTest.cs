@@ -4,11 +4,15 @@ using eBroker.Shared.DTOs;
 using eBroker.Shared.Enums;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Text;
 using Xunit;
 
 namespace eBroker.Tests.BusinessLayerTests
 {
+    /// <summary>
+    /// SYSTEM UNDER TEST: eBroker.Business (Business Layer)
+    /// </summary>
     public class UserBDCTest
     {
         private readonly IUserBDC userBDC;
@@ -18,7 +22,7 @@ namespace eBroker.Tests.BusinessLayerTests
             userBDC = new UserBDC();
         }
 
-        [Fact]
+        [Fact, Description("Ensure success message is provided on valid user authentication")]
         public void UserAuthentcation_Returns_Success_Message()
         {
             //Arrange
@@ -37,7 +41,7 @@ namespace eBroker.Tests.BusinessLayerTests
             Assert.Equal(expectedStatusMessage, result.Message);
         }
 
-        [Fact]
+        [Fact, Description("Ensure error message is provided on invalid user authentication")]
         public void UserAuthentcation_Returns_Error_Message()
         {
             //Arrange
@@ -56,7 +60,7 @@ namespace eBroker.Tests.BusinessLayerTests
             Assert.Equal(expectedStatusMessage, result.Message);
         }
 
-        [Fact]
+        [Fact, Description("Ensure portfolio is provided for valid user")]
         public void GetUserPortfolio_Returns_Success_PortfolioList_for_ValidUser()
         {
             //Arrange
@@ -69,7 +73,7 @@ namespace eBroker.Tests.BusinessLayerTests
             Assert.NotEmpty(result.Data.UserPortfolioDTOs);
         }
 
-        [Fact]
+        [Fact, Description("Ensure proper error message is provided on requesting portfoli for valid user")]
         public void GetUserPortfolio_Returns_Error_Message_For_ValidUser()
         {
             //Arrange
@@ -83,7 +87,7 @@ namespace eBroker.Tests.BusinessLayerTests
             Assert.Equal(expectedStatusMessage, result.Message);
         }
 
-        [Fact]
+        [Fact, Description("Ensure proper error message is provided on requesting portfoli for invalid user")]
         public void GetUserPortfolio_Returns_Error_Message_For_InvalidValidUser()
         {
             //Arrange

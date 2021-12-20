@@ -4,12 +4,16 @@ using eBroker.Tests.InMemoryData;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using Xunit;
 
 namespace eBroker.Tests.DataLayerTests
 {
+    /// <summary>
+    /// SYSTEM UNDER TEST: eBroker.DAL (Data Layer)
+    /// </summary>
     public class AccountDACTest
     {
         private DbContextOptions<EBrokerDbContext> options;
@@ -21,7 +25,7 @@ namespace eBroker.Tests.DataLayerTests
         }
 
 
-        [Fact]
+        [Fact , Description("Ensure a valid account details on providing a valid dmat id")]
         public void GetAccountDetails_ByDematID_Returns_AccountDetails_Success()
         {
             //Arrange
@@ -36,7 +40,7 @@ namespace eBroker.Tests.DataLayerTests
             Assert.Equal(expectedAccountId, result.Data.AccountId);
         }
 
-        [Fact]
+        [Fact, Description("Ensure valid data flag set to false if user account does not exist")]
         public void GetAccountDetails_ByDematID_Returns_AccountDetails_Error()
         {
             //Arrange
@@ -50,7 +54,7 @@ namespace eBroker.Tests.DataLayerTests
             Assert.False(result.isValidData);
         }
 
-        [Fact]
+        [Fact, Description("Ensure Valid amount added to user wallet")]
         public void AddFunds_ValidAccount_Fund_Addition_Success()
         {
             //Arrange
@@ -67,7 +71,7 @@ namespace eBroker.Tests.DataLayerTests
             Assert.Equal(expectedAmount, currentAmount.Data.AvailableBalance);
         }
 
-        [Fact]
+        [Fact, Description("Ensure a failure if the account does not exist")]
         public void AddFunds_InValidAccount_Fund_Addition_Failure()
         {
             //Arrange

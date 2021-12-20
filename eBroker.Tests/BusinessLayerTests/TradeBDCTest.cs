@@ -10,11 +10,15 @@ using Microsoft.EntityFrameworkCore;
 using Moq;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Text;
 using Xunit;
 
 namespace eBroker.Tests.BusinessLayerTests
 {
+    /// <summary>
+    /// SYSTEM UNDER TEST: eBroker.Business (Business Layer)
+    /// </summary>
     public class TradeBDCTest
     {
         private readonly ITradeBDC tradeBDC;
@@ -28,7 +32,7 @@ namespace eBroker.Tests.BusinessLayerTests
             options = inMemoryDBContext.Options;
         }
 
-        [Fact]
+        [Fact, Description("Ensure non empty list of stock on requesting all stocks availabe in market")]
         public void GetAllStocks_Returns_List_of_Stocks()
         {
             //Act
@@ -38,7 +42,7 @@ namespace eBroker.Tests.BusinessLayerTests
             Assert.NotEmpty(result.Data);
         }
 
-        [Fact]
+        [Fact, Description("Ensure minimum brokrage is calculated")]
         public void CalculateBrokrage_Returns_Minimum_Brokrage_Amount()
         {
             //Arrange
@@ -52,7 +56,7 @@ namespace eBroker.Tests.BusinessLayerTests
             Assert.Equal(expectedValue, result);
         }
 
-        [Fact]
+        [Fact, Description("Ensure brokrage is calculated")]
         public void CalculateBrokrage_Returns_Brokrage_Amount()
         {
             //Arrange
@@ -66,7 +70,7 @@ namespace eBroker.Tests.BusinessLayerTests
             Assert.Equal(expectedValue, result);
         }
 
-        [Fact]
+        [Fact, Description("Ensure stocks cannnot be bought outside 9AM to 3PM window")]
         public void ValidateAndInitiateTrade_BuyEquity_Outside_Trading_Hours_Returns_Error_Message()
         {
             //Arrange
@@ -91,7 +95,7 @@ namespace eBroker.Tests.BusinessLayerTests
 
         }
 
-        [Fact]
+        [Fact, Description("Ensure stocks cannnot be sold outside 9AM to 3PM window")]
         public void ValidateAndInitiateTrade_SellEquity_Outside_Trading_Hours_Returns_Error_Message()
         {
             //Arrange
@@ -116,7 +120,7 @@ namespace eBroker.Tests.BusinessLayerTests
 
         }
 
-        [Fact]
+        [Fact, Description("Ensure stocks cannnot be bought on saturday and sunday")]
         public void ValidateAndInitiateTrade_BuyEquity_Outside_Trading_Days_Returns_Error_Message()
         {
             //Arrange
@@ -141,7 +145,7 @@ namespace eBroker.Tests.BusinessLayerTests
 
         }
 
-        [Fact]
+        [Fact, Description("Ensure stocks cannnot be sold on saturday and sunday")]
         public void ValidateAndInitiateTrade_SellEquity_Outside_Trading_Days_Returns_Error_Message()
         {
             //Arrange
@@ -166,7 +170,7 @@ namespace eBroker.Tests.BusinessLayerTests
 
         }
 
-        [Fact]
+        [Fact, Description("Ensure Invalid user cannot perform trading ")]
         public void ValidateAndInitiateTrade_InvalidAccount_Error_Message()
         {
             //Arrange
@@ -189,7 +193,7 @@ namespace eBroker.Tests.BusinessLayerTests
             Assert.Equal(expectedMessage, result.Message);
         }
 
-        [Fact]
+        [Fact, Description("Ensure user cannot perform trading on invalid stocks")]
         public void ValidateAndInitiateTrade_InvalidStock_Error_Message()
         {
             //Arrange
@@ -212,7 +216,7 @@ namespace eBroker.Tests.BusinessLayerTests
             Assert.Equal(expectedMessage, result.Message);
         }
 
-        [Fact]
+        [Fact, Description("Ensure user can buy valid stock in valid time")]
         public void ValidateAndInititateTrade_Buy_Success()
         {
             //Arrange
@@ -235,7 +239,7 @@ namespace eBroker.Tests.BusinessLayerTests
             Assert.Equal(expectedMessage, result.Message);
         }
 
-        [Fact]
+        [Fact, Description("Ensure trade cannot happen if user don't have insufficient funds")]
         public void ValidateAndInititateTrade_Buy_Failed_InsufficientFund()
         {
             //Arrange
@@ -258,7 +262,7 @@ namespace eBroker.Tests.BusinessLayerTests
             Assert.Equal(expectedMessage, result.Message);
         }
 
-        [Fact]
+        [Fact, Description("Ensure user can sell valid stock in valid time with proper brokerage charges deducted")]
         public void ValidateAndInititateTrade_Sell_Success()
         {
             //Arrange

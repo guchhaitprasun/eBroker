@@ -4,11 +4,15 @@ using eBroker.Shared.Enums;
 using eBroker.Shared.Helpers;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Text;
 using Xunit;
 
 namespace eBroker.Tests.BusinessLayerTests
 {
+    /// <summary>
+    /// SYSTEM UNDER TEST: eBroker.Business (Business Layer)
+    /// </summary>
     public class AccountBDCTest
     {
         private readonly IAccountBDC accountBDC;
@@ -18,7 +22,7 @@ namespace eBroker.Tests.BusinessLayerTests
             accountBDC = new AccountBDC();
         }
 
-        [Fact]
+        [Fact, Description("Ensure valid account details provided for valid DMAT number")]
         public void GetAccountDetailsByDematID_Returns_AccountDetails_Success()
         {
             //Arrange
@@ -31,7 +35,7 @@ namespace eBroker.Tests.BusinessLayerTests
             Assert.NotNull(result.Data);
         }
 
-        [Fact]
+        [Fact, Description("Ensure no details provided for invalid DMAT number")]
         public void GetAccountDetailsByDematID_Returns_AccountDetails_Failure()
         {
             //Arrange
@@ -44,7 +48,7 @@ namespace eBroker.Tests.BusinessLayerTests
             Assert.Null(result.Data);
         }
 
-        [Fact]
+        [Fact, Description("Ensure validation message on requesting negative funds addition")]
         public void AddFunds_Returns_Validation_ErrorMessage_For_Minimum_Value()
         {
             //Arrange 
@@ -62,7 +66,7 @@ namespace eBroker.Tests.BusinessLayerTests
             Assert.Equal(expectedMessage, result.Message);
         }
 
-        [Fact]
+        [Fact, Description("Ensure valid message on adding funds")]
         public void AddFunds_Returns_Success_Message_For_Fund_Addition()
         {
             //Arrange 
@@ -82,7 +86,7 @@ namespace eBroker.Tests.BusinessLayerTests
             Assert.Equal(expectedMessage, result.Message);
         }
 
-        [Fact]
+        [Fact, Description("Ensure valid message on fund addition with processing charges")]
         public void AddFunds_Returns_Success_Message_For_Fund_Addition_With_Processing_Charge_Above_100000()
         {
             //Arrange 

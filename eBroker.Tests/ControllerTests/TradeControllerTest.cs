@@ -6,11 +6,15 @@ using Microsoft.AspNetCore.Mvc;
 using Moq;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Text;
 using Xunit;
 
 namespace eBroker.Tests.ControllerTests
 {
+    /// <summary>
+    /// SYSTEM UNDER TEST: eBroker.WebAPI (Presentation Layer)
+    /// </summary>
     public class TradeControllerTest
     {
         private readonly TradeController Controller;
@@ -20,7 +24,7 @@ namespace eBroker.Tests.ControllerTests
             Controller = new TradeController();
         }
 
-        [Fact]
+        [Fact, Description("Ensure HTTP Success Status code is provided when requesting all market stocks")]
         public void GetAllMarketStocks_Returns_Success_200()
         {
             //Arrange
@@ -34,7 +38,7 @@ namespace eBroker.Tests.ControllerTests
             Assert.Equal(expectedStatusCode, result.StatusCode);
         }
 
-        [Fact]
+        [Fact, Description("Ensure Buy Stock API can be called")]
         public void BuyStocks_Return_StatusCode_Any()
         {
             //Arrange
@@ -55,7 +59,7 @@ namespace eBroker.Tests.ControllerTests
             Assert.InRange(result.StatusCode.Value, expectedStatusCodeStart, expectedStatusCodeEnd);
         }
 
-        [Fact]
+        [Fact, Description("Ensure Sell Stock API Can be called")]
         public void SellStocks_Return_StatusCode_Any()
         {
             //Arrange

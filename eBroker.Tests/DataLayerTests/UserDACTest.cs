@@ -6,11 +6,15 @@ using eBroker.Tests.InMemoryData;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Text;
 using Xunit;
 
 namespace eBroker.Tests.DataLayerTests
 {
+    /// <summary>
+    /// SYSTEM UNDER TEST: eBroker.DAL (Data Layer)
+    /// </summary>
     public class UserDACTest
     {
         private DbContextOptions<EBrokerDbContext> options;
@@ -21,7 +25,7 @@ namespace eBroker.Tests.DataLayerTests
             options = inMemoryDBContext.Options;
         }
 
-        [Fact]
+        [Fact, Description("Ensure valid data is provided on providing valid credentials")]
         public void UserAuthentcation_Returns_ValidData()
         {
             //Arrange
@@ -41,7 +45,7 @@ namespace eBroker.Tests.DataLayerTests
 
         }
 
-        [Fact]
+        [Fact, Description("Ensures valid data flag sets to false for invalid credentials")]
         public void UserAuthentcation_Returns_InValidData()
         {
             //Arrange
@@ -61,7 +65,7 @@ namespace eBroker.Tests.DataLayerTests
 
         }
 
-        [Fact]
+        [Fact, Description("Ensure portfolio list is provided if exist")]
         public void GetUserPortfolio_ValidUser_NonEmptyPortfolio_List()
         {
             //Arrange
@@ -75,7 +79,7 @@ namespace eBroker.Tests.DataLayerTests
             Assert.NotEmpty(result.Data.UserPortfolioDTOs);
         }
 
-        [Fact]
+        [Fact, Description("Ensure Empty list provided if portfolio not exist")]
         public void GetUserPortfolio_ValidUser_EmptyPortfolio_List()
         {
             //Arrange
@@ -89,7 +93,7 @@ namespace eBroker.Tests.DataLayerTests
             Assert.Empty(result.Data.UserPortfolioDTOs);
         }
 
-        [Fact]
+        [Fact, Description("Ensure valid flag set to false for invalid user")]
         public void GetUserPortfolio_InValidUser()
         {
             //Arrange

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Text;
 using eBroker.Shared.DTOs;
 using eBroker.Shared.Enums;
@@ -10,6 +11,9 @@ using Xunit;
 
 namespace eBroker.Tests.ControllerTests
 {
+    /// <summary>
+    /// SYSTEM UNDER TEST: eBroker.WebAPI (Presentation Layer)
+    /// </summary>
     public class AccountControllerTest
     {
         private readonly AccountsController Controller = null;
@@ -20,7 +24,7 @@ namespace eBroker.Tests.ControllerTests
         }
 
 
-        [Fact]
+        [Fact, Description("Ensure valid status code is porvided for valid user")]
         public void GetUserAccountByDmatID_Returns_Correct_Account_Details_Status_200()
         {
             //Arrange 
@@ -35,7 +39,7 @@ namespace eBroker.Tests.ControllerTests
             Assert.Equal(expectedStatusCode, result.StatusCode);
         }
 
-        [Fact]
+        [Fact, Description("Ensure Bad request status code on providing wrong DMAT Id")]
         public void GetUserAccountByDmatID_Returns_Empty_Account_Details_Status_400()
         {
             //Arrange 
@@ -50,7 +54,7 @@ namespace eBroker.Tests.ControllerTests
             Assert.Equal(expectedStatusCode, result.StatusCode);
         }
 
-        [Fact]
+        [Fact, Description("Ensure Method can be called and providing valid HTTP Status code for Adding funds")]
         public void AddFund_Returns_TransactionStatusMessage_Status_200()
         {
             //Arrange 

@@ -8,12 +8,16 @@ using Microsoft.EntityFrameworkCore;
 using Moq;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using Xunit;
 
 namespace eBroker.Tests.DataLayerTests
 {
+    /// <summary>
+    /// SYSTEM UNDER TEST: eBroker.DAL (Data Layer)
+    /// </summary>
     public class TradeDACTest
     {
         private DbContextOptions<EBrokerDbContext> options;
@@ -24,7 +28,7 @@ namespace eBroker.Tests.DataLayerTests
             options = inMemoryDBContext.Options;
         }
 
-        [Fact]
+        [Fact, Description("Ensure the list of stocks is provided from the DB")]
         public void GetAllStocks_Returns_List_of_Stocks()
         {
             //Arrange
@@ -37,7 +41,7 @@ namespace eBroker.Tests.DataLayerTests
             Assert.NotEmpty(result.Data);
         }
 
-        [Fact]
+        [Fact, Description("Ensure the stocks details is provided from the DB for valid stock id")]
         public void GetStockByID_Returns_Stocks_for_ValidStockId()
         {
             //Arrange
@@ -51,7 +55,7 @@ namespace eBroker.Tests.DataLayerTests
             Assert.NotNull(result.Data);
         }
 
-        [Fact]
+        [Fact, Description("Ensure No Stocks is provided for Invalid stock id")]
         public void GetStockByID_Returns_Null_for_InValidStockId()
         {
             //Arrange
@@ -65,7 +69,7 @@ namespace eBroker.Tests.DataLayerTests
             Assert.Null(result.Data);
         }
 
-        [Fact]
+        [Fact, Description("Ensure true flag is provided if the stock is availabe in user portfolio")]
         public void IsStockInUserPortfolio_Returns_True_for_Stock_Available_in_Portfolio()
         {
             //Arrange
@@ -80,7 +84,7 @@ namespace eBroker.Tests.DataLayerTests
             Assert.True(result.Data);
         }
 
-        [Fact]
+        [Fact, Description("Ensure false flag is provided if the stock is not available in user portfolio")]
         public void IsStockInUserPortfolio_Returns_False_for_Stock_NotAvailable_in_Portfolio()
         {
             //Arrange
@@ -95,7 +99,7 @@ namespace eBroker.Tests.DataLayerTests
             Assert.False(result.Data);
         }
 
-        [Fact]
+        [Fact, Description("Ensure flag true is provided if user has sufficient stocks availabe in portfolio to sell ")]
         public void IsStockQuantitySufficeForSell_Returns_True_for_Stock__Quantity_Available_for_Sell_in_Portfolio()
         {
             //Arrange
@@ -111,7 +115,7 @@ namespace eBroker.Tests.DataLayerTests
             Assert.True(result.Data);
         }
 
-        [Fact]
+        [Fact, Description("Ensure flag false is provided if the user has less stocks then requested for sell")]
         public void IsStockQuantitySufficeForSell_Returns_False_for_Stock__Quantity_NotAvailable_for_Sell_in_Portfolio()
         {
             //Arrange
@@ -127,7 +131,7 @@ namespace eBroker.Tests.DataLayerTests
             Assert.False(result.Data);
         }
 
-        [Fact]
+        [Fact, Description("Ensure Stock Purchase Executed for valid request")]
         public void ProcessPurchase_Returns_True()
         {
             //Arrange
@@ -161,7 +165,7 @@ namespace eBroker.Tests.DataLayerTests
             Assert.True(result);
         }
 
-        [Fact]
+        [Fact, Description("Ensure Stock sold executed for valid request")]
         public void ProcessSelling_Returns_True()
         {
             //Arrange

@@ -3,11 +3,15 @@ using eBroker.WebAPI.Controllers;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Text;
 using Xunit;
 
 namespace eBroker.Tests.ControllerTests
 {
+    /// <summary>
+    /// SYSTEM UNDER TEST: eBroker.WebAPI (Presentation Layer)
+    /// </summary>
     public class UserControllerTest
     {
         private readonly UserController Controller = null;
@@ -17,7 +21,7 @@ namespace eBroker.Tests.ControllerTests
             Controller = new UserController();
         }
 
-        [Fact]
+        [Fact, Description("Ensure Login API Called with status code 200")]
         public void UserAuthentcation_Returns_Success_Status_200()
         {
             //Arrange
@@ -37,7 +41,7 @@ namespace eBroker.Tests.ControllerTests
             Assert.Equal(expectedStatusCode, result.StatusCode);
         }
 
-        [Fact]
+        [Fact, Description("Ensure Login API Called with status code 400")]
         public void UserAuthentcation_Returns_Error_Status_400()
         {
             //Arrange
@@ -57,7 +61,7 @@ namespace eBroker.Tests.ControllerTests
             Assert.Equal(expectedStatusCode, result.StatusCode);
         }
 
-        [Fact]
+        [Fact, Description("Ensure get user portfolio API Called with status code 200")]
         public void GetUserPortfolio_Returns_Success_Status_200()
         {
             //Arrange
@@ -73,7 +77,7 @@ namespace eBroker.Tests.ControllerTests
             Assert.Equal(expectedStatusCode, result.StatusCode);
         }
 
-        [Fact]
+        [Fact, Description("Ensure get user portfolio Called with status code 400")]
         public void GetUserPortfolio_Returns_Error_Status_400()
         {
             //Arrange
