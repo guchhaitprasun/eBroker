@@ -12,5 +12,7 @@ namespace eBroker.Business.Interface
         public DataContainer<IList<StockDTO>> GetAllStocks();
 
         public DataContainer<bool> ValidateAndInitiateTrade(Trade tradeDetails, TradeType tradeType);
+
+        public decimal CalculateBrokrage(decimal shareSellvalue);
     }
 }

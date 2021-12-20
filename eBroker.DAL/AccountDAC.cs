@@ -26,10 +26,11 @@ namespace eBroker.DAL
             dbContext = new EBrokerDbContext();
         }
 
-        public AccountDAC(EBrokerDbContext _dbContext)
+        public AccountDAC(DbContextOptions dbContextOptions)
         {
+            var _dbContextOptions = (DbContextOptions<EBrokerDbContext>)dbContextOptions;
             Mapper = new ObjectMapper();
-            dbContext = _dbContext;
+            dbContext = new EBrokerDbContext(_dbContextOptions);
         }
 
  

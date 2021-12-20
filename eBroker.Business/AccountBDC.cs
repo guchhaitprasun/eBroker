@@ -4,6 +4,7 @@ using eBroker.DAL.Interface;
 using eBroker.Shared.DTOs;
 using eBroker.Shared.Enums;
 using eBroker.Shared.Helpers;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -12,12 +13,22 @@ namespace eBroker.Business
 {
     public class AccountBDC : IAccountBDC
     {
+        private DbContextOptions _dbContextOptions;
+        IAccountDAC accountDAC;
+
+        public AccountBDC(DbContextOptions options = null)
+        {
+            if (options != null)
+                accountDAC = new AccountDAC(options);
+            else
+                accountDAC = new AccountDAC();
+        }
+
         public DataContainer<AccountDTO> GetAccountDetailsByDematID(string dmatNumber)
         {
             DataContainer<AccountDTO> returnValue = new DataContainer<AccountDTO>();
             try
             {
-                IAccountDAC accountDAC = new AccountDAC();
                 returnValue = accountDAC.GetAccountDetailsByDematID(dmatNumber);
             }
             catch (Exception ex)
@@ -34,7 +45,6 @@ namespace eBroker.Business
             {
                 if(fund.Amount > 0)
                 {
-                    IAccountDAC accountDAC = new AccountDAC();
                     returnValue = accountDAC.AddFunds(fund.DmatNumber, fund.Amount);
                     returnValue.Message = returnValue.isValidData && returnValue.Data ? 
                         Constants.FundAddSuccess.Replace(Constants.Amount, fund.Amount.ToString()).Replace(Constants.DMATNumber, fund.DmatNumber).Replace(Constants.ProcessingCharges, fund.ProcessingCharges.ToString()) 
