@@ -8,8 +8,18 @@ namespace eBroker.Business.Interface
 {
     public interface IUserBDC
     {
-        public DataContainer<UserDTO> GetUserPortfolio(int userId);
+        /// <summary>
+        /// Get all the stocks aquired by user
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <returns></returns>
+        DataContainer<UserDTO> GetUserPortfolio(int userId);
 
-        public DataContainer<UserDTO> AuthentictaeUser(UserDTO user);
+        /// <summary>
+        /// Verify the credentials (just a mock for login)
+        /// </summary>
+        /// <param name="user"></param>
+        /// <returns></returns>
+        DataContainer<UserDTO> AuthentictaeUser(UserDTO user);
     }
 }

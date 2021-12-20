@@ -5,15 +5,24 @@ using System.Text;
 
 namespace eBroker.Shared.Helpers
 {
+    /// <summary>
+    /// Container to initiate fund related transaction from API
+    /// </summary>
     public class Fund
     {
 
         private decimal amount;
         private decimal processingCharges;
 
+        /// <summary>
+        /// DMAT Number for Fund addition
+        /// </summary>
         [DefaultValue("1234-5678-9012-3456")] 
         public string DmatNumber { get; set; }
 
+        /// <summary>
+        /// Amount with processing charges removed from the actual amount
+        /// </summary>
         [DefaultValue("0")]
         public decimal Amount
         {
@@ -33,6 +42,10 @@ namespace eBroker.Shared.Helpers
                     amount = value;
             }
         }
+
+        /// <summary>
+        /// Readonly value for the calculated processing charges
+        /// </summary>
         public decimal ProcessingCharges
         {
             get
@@ -41,6 +54,11 @@ namespace eBroker.Shared.Helpers
             }
         }
 
+        /// <summary>
+        /// Static funtion to calculate processing charges
+        /// </summary>
+        /// <param name="amount"></param>
+        /// <returns></returns>
         public static decimal CalculateProcessingCharges(decimal amount)
         {
             decimal retunValue = 0;

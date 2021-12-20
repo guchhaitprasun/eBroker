@@ -31,7 +31,7 @@ namespace eBroker.WebAPI.Controllers
         /// <summary>
         /// User Authentication (pass email and password only in payload)
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Http Action Result with user details</returns>
         [HttpPost, Route("Post/login")]
         public IActionResult LoginUser(UserDTO user)
         {
@@ -51,7 +51,8 @@ namespace eBroker.WebAPI.Controllers
         /// <summary>
         /// Get List of stocks acquired by user
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Http Action result with user portfolio Data
+        /// </returns>
         [HttpGet, Route("Get/getUserPortfolioList/{userID}")]
         public IActionResult GetUserPortfolio(int userID)
         {

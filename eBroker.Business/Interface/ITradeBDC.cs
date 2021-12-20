@@ -7,12 +7,30 @@ using static eBroker.Shared.Enums.Constants;
 
 namespace eBroker.Business.Interface
 {
+    /// <summary>
+    /// Interface for Trade Business Dev Centre 
+    /// </summary>
     public interface ITradeBDC
     {
-        public DataContainer<IList<StockDTO>> GetAllStocks();
+        /// <summary>
+        /// Get Lists of Stock available for tradeing
+        /// </summary>
+        /// <returns></returns>
+        DataContainer<IList<StockDTO>> GetAllStocks();
 
-        public DataContainer<bool> ValidateAndInitiateTrade(Trade tradeDetails, TradeType tradeType);
+        /// <summary>
+        /// Checks if Trading is possible and based on trade type call buy or sell stock processes.
+        /// </summary>
+        /// <param name="tradeDetails"></param>
+        /// <param name="tradeType"></param>
+        /// <returns></returns>
+        DataContainer<bool> ValidateAndInitiateTrade(Trade tradeDetails, TradeType tradeType);
 
-        public decimal CalculateBrokrage(decimal shareSellvalue);
+        /// <summary>
+        /// Calculate brokerage on the amount user is selling in the market
+        /// </summary>
+        /// <param name="shareSellvalue"></param>
+        /// <returns></returns>
+        decimal CalculateBrokrage(decimal shareSellvalue);
     }
 }

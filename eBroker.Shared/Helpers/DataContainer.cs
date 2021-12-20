@@ -4,6 +4,10 @@ using System.Text;
 
 namespace eBroker.Shared.Helpers
 {
+    /// <summary>
+    /// Generic Container to ease the data validation and pass informative messages
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
     public class DataContainer<T>
     {
 

@@ -4,6 +4,9 @@ using System.Text;
 
 namespace eBroker.Shared.DTOs
 {
+    /// <summary>
+    /// Container for User Details
+    /// </summary>
     public class UserDTO
     {
         public UserDTO()

@@ -20,12 +20,19 @@ namespace eBroker.DAL
         private ObjectMapper Mapper = null;
         private EBrokerDbContext dbContext;
 
+        /// <summary>
+        /// Constructor Overload
+        /// </summary>
         public AccountDAC()
         {
             Mapper = new ObjectMapper();
             dbContext = new EBrokerDbContext();
         }
 
+        /// <summary>
+        /// Constructor Overload for datbase mocking and using in memory database
+        /// </summary>
+        /// <param name="dbContextOptions"></param>
         public AccountDAC(DbContextOptions dbContextOptions)
         {
             var _dbContextOptions = (DbContextOptions<EBrokerDbContext>)dbContextOptions;

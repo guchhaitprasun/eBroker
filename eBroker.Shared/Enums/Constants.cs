@@ -4,6 +4,9 @@ using System.Text;
 
 namespace eBroker.Shared.Enums
 {
+    /// <summary>
+    /// Constants and Enums for the project 
+    /// </summary>
     public static class Constants
     {
         public enum TradeType

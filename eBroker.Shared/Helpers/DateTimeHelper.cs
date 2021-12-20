@@ -5,6 +5,9 @@ using System.Text;
 
 namespace eBroker.Shared.Helpers
 {
+    /// <summary>
+    /// Helper to get the datetime
+    /// </summary>
     public class DateTimeHelper : IDateTimeHelper
     {
         public DateTime GetDateTimeNow()

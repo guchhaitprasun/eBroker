@@ -22,6 +22,8 @@ namespace eBroker.Business
         private IAccountBDC accountBDC;
         private DbContextOptions _dbContextOptions;
 
+        #region Public Methods
+
         public TradeBDC(IDateTimeHelper dateTimeHelper = null, DbContextOptions dbContextOptions = null)
         {
             if(dateTimeHelper != null)
@@ -65,7 +67,6 @@ namespace eBroker.Business
             }
             return returnVal;
         }
-
         public DataContainer<bool> ValidateAndInitiateTrade(Trade tradeDetails, TradeType tradeType)
         {
             DataContainer<bool> returnValue = new DataContainer<bool>();
@@ -101,15 +102,20 @@ namespace eBroker.Business
             }
 
         }
-
         public decimal CalculateBrokrage(decimal shareSellvalue)
         {
             decimal brokerage = shareSellvalue * (decimal)0.05;
             return brokerage < 20 ? 20 : brokerage;
         }
 
+        #endregion 
+
         #region Private Helper Methods
 
+        /// <summary>
+        /// Checks if trading is within 9AM to 3PM & from Mon to Fri or not
+        /// </summary>
+        /// <returns></returns>
         private DataContainer<bool> isTradingPossible()
         {
             DateTime currentDateTime = _dateTimeHelper.GetDateTimeNow();
@@ -135,16 +141,34 @@ namespace eBroker.Business
             return dataContainer;
         }
 
+        /// <summary>
+        /// Get the Stock Information 
+        /// </summary>
+        /// <param name="stockID">Stock Id to get the inforation</param>
+        /// <returns></returns>
         private DataContainer<StockDTO> GetStockByID(int stockID)
         {
             return tradeDAC.GetStockByID(stockID);
         }
 
+        /// <summary>
+        /// Get User Information From the database
+        /// </summary>
+        /// <param name="dmatId"></param>
+        /// <returns></returns>
         private DataContainer<AccountDTO> GetUserDetails(string dmatId)
         {
             return accountBDC.GetAccountDetailsByDematID(dmatId);
         }
 
+        /// <summary>
+        /// Process Trading based on the requested trade type (Buy/Sell)
+        /// </summary>
+        /// <param name="tradeDetails"></param>
+        /// <param name="tradeType"></param>
+        /// <param name="stockDetials"></param>
+        /// <param name="accountDetails"></param>
+        /// <returns></returns>
         private DataContainer<bool> ProcessTrade(Trade tradeDetails, TradeType tradeType, StockDTO stockDetials, AccountDTO accountDetails)
         {
             DataContainer<bool> returnValue = new DataContainer<bool>();
@@ -161,6 +185,13 @@ namespace eBroker.Business
             return returnValue;
         }
 
+        /// <summary>
+        /// Buy Stocks
+        /// </summary>
+        /// <param name="tradeDetails"></param>
+        /// <param name="stockDetail"></param>
+        /// <param name="accountDetails"></param>
+        /// <returns></returns>
         private DataContainer<bool> BuyStocks(Trade tradeDetails, StockDTO stockDetail, AccountDTO accountDetails)
         {
             DataContainer<bool> returnValue = new DataContainer<bool>();
@@ -181,6 +212,13 @@ namespace eBroker.Business
             return returnValue;
         }
 
+        /// <summary>
+        /// Sell Stocks
+        /// </summary>
+        /// <param name="tradeDetails"></param>
+        /// <param name="stockDetail"></param>
+        /// <param name="accountDetails"></param>
+        /// <returns></returns>
         private DataContainer<bool> SellStocks(Trade tradeDetails, StockDTO stockDetail, AccountDTO accountDetails)
         {
             DataContainer<bool> returnValue = new DataContainer<bool>();
@@ -211,6 +249,7 @@ namespace eBroker.Business
             returnValue.isValidData = true;
             return returnValue;
         }
+        
         #endregion
     }
 }

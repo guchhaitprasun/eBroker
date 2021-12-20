@@ -16,19 +16,28 @@ namespace eBroker.DAL
     {
         private ObjectMapper mapper = null;
         private EBrokerDbContext dbContext;
+
+        /// <summary>
+        /// Constructor  
+        /// </summary>
         public TradeDAC()
         {
             mapper = new ObjectMapper();
             dbContext = new EBrokerDbContext();
         }
 
+        /// <summary>
+        /// Constructor Overload to Mock DB and use In-memory DB
+        /// </summary>
+        /// <param name="dbContextOptions"></param>
         public TradeDAC(DbContextOptions dbContextOptions)
         {
-            var dbOptions = (DbContextOptions<EBrokerDbContext>) dbContextOptions;
+            var dbOptions = (DbContextOptions<EBrokerDbContext>)dbContextOptions;
             mapper = new ObjectMapper();
             dbContext = new EBrokerDbContext(dbOptions);
         }
 
+        #region Public Functions
         public DataContainer<IList<StockDTO>> GetAllStocks()
         {
             DataContainer<IList<StockDTO>> returnVal = new DataContainer<IList<StockDTO>>();
@@ -118,8 +127,14 @@ namespace eBroker.DAL
             var tradeType = Constants.TradeType.Sell;
             return UpdateAccountDetails(account, -sellingGainAmount) && AddTradeHistory(account, trade, sellingGainAmount, tradeType, tradeTime) && AddUpdateUserPortfolioAfterSell(account, trade, sellingGainAmount + brokerage);
         }
+        #endregion
 
         #region Private Helper Functions
+        /// <summary>
+        /// used to map List of stock into Stoks DTO
+        /// </summary>
+        /// <param name="stockList"></param>
+        /// <returns></returns>
         private IList<StockDTO> MapStockList(IList<Stock> stockList)
         {
             IList<StockDTO> _stockList = new List<StockDTO>();
@@ -135,6 +150,12 @@ namespace eBroker.DAL
 
         #region Private Database Functions
 
+        /// <summary>
+        /// Update Account Table for Purchase and sales of stocks
+        /// </summary>
+        /// <param name="account"></param>
+        /// <param name="purchaseAmount"></param>
+        /// <returns></returns>
         private bool UpdateAccountDetails(AccountDTO account, decimal purchaseAmount)
         {
             var userAccount = dbContext.Account.Where(o => o.UserId == account.UserId && o.DmatAccountNumber == account.DmatAccountNumber).FirstOrDefault();
@@ -148,6 +169,15 @@ namespace eBroker.DAL
             return false;
         }
 
+        /// <summary>
+        /// Add Transaction History for purchase and sales of stocks into the database
+        /// </summary>
+        /// <param name="account"></param>
+        /// <param name="trade"></param>
+        /// <param name="purchaseAmount"></param>
+        /// <param name="tradeType"></param>
+        /// <param name="tradeTime"></param>
+        /// <returns></returns>
         private bool AddTradeHistory(AccountDTO account, Trade trade, decimal purchaseAmount, Constants.TradeType tradeType, DateTime tradeTime)
         {
             TradeHistory details = new TradeHistory();
@@ -165,6 +195,13 @@ namespace eBroker.DAL
             return true;
         }
 
+        /// <summary>
+        /// Update user portfolio table for stock purchase
+        /// </summary>
+        /// <param name="account"></param>
+        /// <param name="tradeDetails"></param>
+        /// <param name="purchaseAmount"></param>
+        /// <returns></returns>
         private bool AddUpdateUserPortfolio(AccountDTO account, Trade tradeDetails, decimal purchaseAmount)
         {
             var portfolio = dbContext.UserPortfolio.Where(o => o.UserId == account.UserId && o.StockId == tradeDetails.StockID).FirstOrDefault();
@@ -191,6 +228,13 @@ namespace eBroker.DAL
             return true;
         }
 
+        /// <summary>
+        /// Update user portfolio for stock selling 
+        /// </summary>
+        /// <param name="account"></param>
+        /// <param name="tradeDetails"></param>
+        /// <param name="sellAmount"></param>
+        /// <returns></returns>
         private bool AddUpdateUserPortfolioAfterSell(AccountDTO account, Trade tradeDetails, decimal sellAmount)
         {
             var portfolio = dbContext.UserPortfolio.Where(o => o.UserId == account.UserId && o.StockId == tradeDetails.StockID).FirstOrDefault();

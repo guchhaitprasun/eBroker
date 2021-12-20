@@ -33,11 +33,10 @@
             Trading APIs Implementation
             </summary>
         </member>
-        <member name="M:eBroker.WebAPI.Controllers.TradeController.#ctor(eBroker.Shared.Interface.IDateTimeHelper)">
+        <member name="M:eBroker.WebAPI.Controllers.TradeController.#ctor">
             <summary>
-            Constructor With Overload
+            With Overload
             </summary>
-            <param name="dateTimeHelper"></param>
         </member>
         <member name="M:eBroker.WebAPI.Controllers.TradeController.GetAllStocks">
             <summary>
@@ -73,13 +72,14 @@
             <summary>
             User Authentication (pass email and password only in payload)
             </summary>
-            <returns></returns>
+            <returns>Http Action Result with user details</returns>
         </member>
         <member name="M:eBroker.WebAPI.Controllers.UserController.GetUserPortfolio(System.Int32)">
             <summary>
             Get List of stocks acquired by user
             </summary>
-            <returns></returns>
+            <returns>Http Action result with user portfolio Data
+            </returns>
         </member>
     </members>
 </doc>

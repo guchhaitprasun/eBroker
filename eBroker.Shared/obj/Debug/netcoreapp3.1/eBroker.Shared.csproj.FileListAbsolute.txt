@@ -1,0 +1,9 @@
+D:\NAGP\G_UnitTesting\HomeAssignment\eBroker\eBroker.Shared\bin\Debug\netcoreapp3.1\eBroker.Shared.deps.json
+D:\NAGP\G_UnitTesting\HomeAssignment\eBroker\eBroker.Shared\bin\Debug\netcoreapp3.1\eBroker.Shared.dll
+D:\NAGP\G_UnitTesting\HomeAssignment\eBroker\eBroker.Shared\bin\Debug\netcoreapp3.1\eBroker.Shared.pdb
+D:\NAGP\G_UnitTesting\HomeAssignment\eBroker\eBroker.Shared\obj\Debug\netcoreapp3.1\eBroker.Shared.csproj.AssemblyReference.cache
+D:\NAGP\G_UnitTesting\HomeAssignment\eBroker\eBroker.Shared\obj\Debug\netcoreapp3.1\eBroker.Shared.AssemblyInfoInputs.cache
+D:\NAGP\G_UnitTesting\HomeAssignment\eBroker\eBroker.Shared\obj\Debug\netcoreapp3.1\eBroker.Shared.AssemblyInfo.cs
+D:\NAGP\G_UnitTesting\HomeAssignment\eBroker\eBroker.Shared\obj\Debug\netcoreapp3.1\eBroker.Shared.csproj.CoreCompileInputs.cache
+D:\NAGP\G_UnitTesting\HomeAssignment\eBroker\eBroker.Shared\obj\Debug\netcoreapp3.1\eBroker.Shared.dll
+D:\NAGP\G_UnitTesting\HomeAssignment\eBroker\eBroker.Shared\obj\Debug\netcoreapp3.1\eBroker.Shared.pdb

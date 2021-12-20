@@ -17,12 +17,19 @@ namespace eBroker.DAL
         private ObjectMapper mapper;
         private EBrokerDbContext dbContext;
 
+        /// <summary>
+        /// Constructor
+        /// </summary>
         public UserDAC()
         {
             mapper = new ObjectMapper();
             dbContext = new EBrokerDbContext();
         }
 
+        /// <summary>
+        /// Constructor Overload to mock db using inmemory database. 
+        /// </summary>
+        /// <param name="dbContextOptions"></param>
         public UserDAC(DbContextOptions<EBrokerDbContext> dbContextOptions)
         {
             mapper = new ObjectMapper();

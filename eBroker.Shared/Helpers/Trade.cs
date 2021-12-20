@@ -5,6 +5,9 @@ using System.Text;
 
 namespace eBroker.Shared.Helpers
 {
+    /// <summary>
+    /// Container to initiate trade related transaction from API
+    /// </summary>
     public class Trade
     {
         [DefaultValue("1234-5678-9012-3456")]

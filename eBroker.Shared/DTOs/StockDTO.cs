@@ -4,6 +4,9 @@ using System.Text;
 
 namespace eBroker.Shared.DTOs
 {
+    /// <summary>
+    /// Container for stocks detail
+    /// </summary>
     public class StockDTO
     {
         public StockDTO()

@@ -24,12 +24,11 @@ namespace eBroker.WebAPI.Controllers
         private static ITradeBDC tradeBDC;
 
         /// <summary>
-        /// Constructor With Overload
+        /// With Overload
         /// </summary>
-        /// <param name="dateTimeHelper"></param>
-        public TradeController(IDateTimeHelper dateTimeHelper = null)
+        public TradeController()
         {
-            tradeBDC = new TradeBDC(dateTimeHelper);
+            tradeBDC = new TradeBDC();
         }
 
 

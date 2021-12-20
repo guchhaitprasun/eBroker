@@ -13,8 +13,8 @@ namespace eBroker.Business
 {
     public class AccountBDC : IAccountBDC
     {
-        private DbContextOptions _dbContextOptions;
-        IAccountDAC accountDAC;
+        private readonly DbContextOptions _dbContextOptions;
+        private readonly IAccountDAC accountDAC;
 
         public AccountBDC(DbContextOptions options = null)
         {

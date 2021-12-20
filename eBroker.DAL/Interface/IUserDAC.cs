@@ -8,7 +8,18 @@ namespace eBroker.DAL.Interface
 {
     public interface IUserDAC
     {
-        public DataContainer<UserDTO> AuthenticatUser(UserDTO user);
-        public DataContainer<UserDTO> GetUserPortfolio(int userId);
+        /// <summary>
+        /// Check for user credentials in the database
+        /// </summary>
+        /// <param name="user"></param>
+        /// <returns></returns>
+        DataContainer<UserDTO> AuthenticatUser(UserDTO user);
+        
+        /// <summary>
+        /// Gets User Portfolio from database
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <returns></returns>
+        DataContainer<UserDTO> GetUserPortfolio(int userId);
     }
 }
