@@ -26,16 +26,7 @@ namespace eBroker.Business
 
         public DataContainer<AccountDTO> GetAccountDetailsByDematID(string dmatNumber)
         {
-            DataContainer<AccountDTO> returnValue = new DataContainer<AccountDTO>();
-            try
-            {
-                returnValue = accountDAC.GetAccountDetailsByDematID(dmatNumber);
-            }
-            catch (Exception ex)
-            {
-                returnValue.Message = Constants.BDCException + ex.Message;
-            }
-            return returnValue;
+           return accountDAC.GetAccountDetailsByDematID(dmatNumber);
         }
 
         public DataContainer<bool> AddFunds(Fund fund)
@@ -49,7 +40,8 @@ namespace eBroker.Business
                     returnValue.Message = returnValue.isValidData && returnValue.Data ? 
                         Constants.FundAddSuccess.Replace(Constants.Amount, fund.Amount.ToString()).Replace(Constants.DMATNumber, fund.DmatNumber).Replace(Constants.ProcessingCharges, fund.ProcessingCharges.ToString()) 
                         : Constants.DMATNotExist.Replace(Constants.DMATNumber, fund.DmatNumber);
-                } else
+                } 
+                else
                 {
                     returnValue.Message = Constants.FundValidation;
 

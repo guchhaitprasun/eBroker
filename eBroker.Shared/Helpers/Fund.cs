@@ -23,7 +23,6 @@ namespace eBroker.Shared.Helpers
         /// <summary>
         /// Amount with processing charges removed from the actual amount
         /// </summary>
-        [DefaultValue("0")]
         public decimal Amount
         {
             get

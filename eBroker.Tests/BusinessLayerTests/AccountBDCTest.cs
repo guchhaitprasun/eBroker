@@ -66,6 +66,19 @@ namespace eBroker.Tests.BusinessLayerTests
             Assert.Equal(expectedMessage, result.Message);
         }
 
+        [Fact, Description("Ensure validation message on requesting negative funds addition")]
+        public void AddFunds_Returns_Exception()
+        {
+            //Arrange 
+            var expectedMessage = "Logical Operations Exception on BDC \n Object reference not set to an instance of an object.";
+
+            //Act 
+            var result = accountBDC.AddFunds(null);
+
+            //Assert
+            Assert.Equal(expectedMessage, result.Message);
+        }
+
         [Fact, Description("Ensure valid message on adding funds")]
         public void AddFunds_Returns_Success_Message_For_Fund_Addition()
         {
