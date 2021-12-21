@@ -1,3 +1,8 @@
+CREATE DATABASE eBroker;
+
+USE eBroker
+go
+
 CREATE TABLE [Role] (
 	RoleID INT PRIMARY KEY IDENTITY (1, 1)
 	, RoleName NVARCHAR(100)
