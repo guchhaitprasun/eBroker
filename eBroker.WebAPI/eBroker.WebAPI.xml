@@ -28,14 +28,36 @@
             <param name="fund"></param>
             <returns></returns>
         </member>
+        <member name="T:eBroker.WebAPI.Controllers.CommonController">
+            <summary>
+            Common APIs 
+            </summary>
+        </member>
+        <member name="M:eBroker.WebAPI.Controllers.CommonController.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:eBroker.WebAPI.Controllers.CommonController.GetTradeType">
+            <summary>
+            Get Trade type for dropdown
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:eBroker.WebAPI.Controllers.CommonController.GetTradeHistory(System.Int32)">
+            <summary>
+            Get Trade history for respective user
+            </summary>
+            <returns></returns>
+        </member>
         <member name="T:eBroker.WebAPI.Controllers.TradeController">
             <summary>
             Trading APIs Implementation
             </summary>
         </member>
-        <member name="M:eBroker.WebAPI.Controllers.TradeController.#ctor">
+        <member name="M:eBroker.WebAPI.Controllers.TradeController.#ctor(eBroker.Business.Interface.ITradeBDC)">
             <summary>
-            With Overload
+            Constructor With Overload
             </summary>
         </member>
         <member name="M:eBroker.WebAPI.Controllers.TradeController.GetAllStocks">

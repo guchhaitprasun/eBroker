@@ -131,8 +131,8 @@ namespace eBroker.Tests.DataLayerTests
             Assert.False(result.Data);
         }
 
-        [Fact, Description("Ensure Stock Purchase Executed for valid request")]
-        public void ProcessPurchase_Returns_True()
+        [Fact, Description("Ensure new entry was not made and existing entry was updated in user portfolio")]
+        public void ProcessPurchase_Returns_True_For_Stock_Exist_In_Portfolio()
         {
             //Arrange
             var tradeDac = new TradeDAC(options);
@@ -148,6 +148,40 @@ namespace eBroker.Tests.DataLayerTests
             {
                 DmatAccountnumber = "1111-2222-3333-4444",
                 StockID = 1,
+                EquityQuantity = 1
+            };
+
+            var stockPrice = tradeDac.GetStockByID(tradeDetails.StockID).Data.Price;
+            var purchaseAmount = stockPrice * tradeDetails.EquityQuantity;
+            var mockDateTimeHelper = new Mock<IDateTimeHelper>();
+            var fakeDateTime = new DateTime(2021, 12, 20, 10, 30, 30);
+            mockDateTimeHelper.Setup(o => o.GetDateTimeNow()).Returns(fakeDateTime);
+            var mockDateTime = mockDateTimeHelper.Object.GetDateTimeNow();
+
+            //Act 
+            var result = tradeDac.ProcessPurchase(accountDetails, tradeDetails, purchaseAmount, mockDateTime);
+
+            //Assert
+            Assert.True(result);
+        }
+
+        [Fact, Description("Ensure Stock Purchase Executed for valid request where stock does not exist in user portfolio")]
+        public void ProcessPurchase_Returns_True()
+        {
+            //Arrange
+            var tradeDac = new TradeDAC(options);
+            var accountDetails = new AccountDTO
+            {
+                AccountId = 101,
+                UserId = 100,
+                DmatAccountNumber = "1111-2222-3333-4444",
+                AvailableBalance = 1000,
+                IsActive = true
+            };
+            var tradeDetails = new Trade
+            {
+                DmatAccountnumber = "1111-2222-3333-4444",
+                StockID = 2,
                 EquityQuantity = 1
             };
 

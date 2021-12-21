@@ -30,21 +30,6 @@ namespace eBroker.Data.Mapper
             return userDetails;
         }
 
-        public User MapUserDTOToUser(UserDTO user)
-        {
-            User userDetails = new User();
-            if (user != null)
-            {
-                userDetails.UserId = user.UserId;
-                userDetails.FirstName = user.FirstName;
-                userDetails.LastName = user.LastName;
-                userDetails.EmailAddress = user.EmailAddress;
-
-            }
-
-            return userDetails;
-        }
-
         public StockDTO MapStockToStockDTO(Stock stock)
         {
             StockDTO stockDetail = new StockDTO();
@@ -93,6 +78,11 @@ namespace eBroker.Data.Mapper
                 accountDTO.DmatAccountNumber = account.DmatAccountNumber;
                 accountDTO.AvailableBalance = account.AvailableBalance.HasValue ? account.AvailableBalance.Value : decimal.MinValue;
                 accountDTO.IsActive = account.IsActive.HasValue ? account.IsActive.Value : false;
+            }
+
+            if(account.User != null)
+            {
+                accountDTO.user = MapUserToUserDTO(account.User);
             }
 
             return accountDTO;

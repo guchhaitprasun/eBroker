@@ -24,11 +24,14 @@ namespace eBroker.WebAPI.Controllers
         private static ITradeBDC tradeBDC;
 
         /// <summary>
-        /// With Overload
+        /// Constructor With Overload
         /// </summary>
-        public TradeController()
+        public TradeController(ITradeBDC _tradeBDC = null)
         {
-            tradeBDC = new TradeBDC();
+            if (_tradeBDC != null)
+                tradeBDC = _tradeBDC;
+            else
+                tradeBDC = new TradeBDC();
         }
 
 

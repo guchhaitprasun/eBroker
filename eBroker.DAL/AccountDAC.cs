@@ -46,7 +46,7 @@ namespace eBroker.DAL
             DataContainer<AccountDTO> response = new DataContainer<AccountDTO>();
             try
             {
-                var data = dbContext.Account.Where(o => o.DmatAccountNumber == dmatNumber).FirstOrDefault();
+                var data = dbContext.Account.Include(o => o.User).Where(o => o.DmatAccountNumber == dmatNumber).FirstOrDefault();
                 if (data != null)
                 {
                     response.Data = Mapper.MapAccountsToAccountsDTO(data);

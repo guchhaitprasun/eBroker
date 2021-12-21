@@ -58,6 +58,16 @@ namespace eBroker.Tests.InMemoryData
                     IsActive = true
                 });
 
+                _context.Stock.Add(new Stock
+                {
+                    StockId = 2,
+                    StockName = "Infosys",
+                    Price = 109.55m,
+                    DayHigh = 120.20m,
+                    DayLow = 105.10m,
+                    IsActive = true
+                });
+
                 _context.Account.Add(new Account
                 {
                     AccountId = 101,
@@ -86,8 +96,8 @@ namespace eBroker.Tests.InMemoryData
         /// </summary>
         public void Dispose()
         {
-            _context.Database.EnsureDeleted();
-            _context.Dispose();
+            //_context.Database.EnsureDeleted();
+            //_context.Dispose();
         }
     }
 

@@ -17,6 +17,7 @@ namespace eBroker.Shared.DTOs
             DmatAccountNumber = String.Empty;
             AvailableBalance = decimal.MinValue;
             IsActive = false;
+            user = new UserDTO();
         }
 
         public int AccountId { get; set; }
@@ -24,5 +25,7 @@ namespace eBroker.Shared.DTOs
         public string DmatAccountNumber { get; set; }
         public decimal AvailableBalance { get; set; }
         public bool IsActive { get; set; }
+
+        public UserDTO user { get; set; }
     }
 }

@@ -45,7 +45,7 @@ namespace eBroker.DAL
             {
                 var data = dbContext.Stock.Where(o => o.IsActive.HasValue && o.IsActive.Value).ToList();
 
-                if (data != null && data.Count > 0)
+                if (data != null)
                 {
                     returnVal.Data = MapStockList(data);
                     returnVal.isValidData = true;
@@ -158,15 +158,16 @@ namespace eBroker.DAL
         /// <returns></returns>
         private bool UpdateAccountDetails(AccountDTO account, decimal purchaseAmount)
         {
+            bool response = false;
             var userAccount = dbContext.Account.Where(o => o.UserId == account.UserId && o.DmatAccountNumber == account.DmatAccountNumber).FirstOrDefault();
             if (userAccount != null)
             {
                 userAccount.AvailableBalance = userAccount.AvailableBalance - purchaseAmount;
                 dbContext.SaveChanges();
-                return true;
+                response =  true;
             }
 
-            return false;
+            return response;
         }
 
         /// <summary>
@@ -238,20 +239,19 @@ namespace eBroker.DAL
         private bool AddUpdateUserPortfolioAfterSell(AccountDTO account, Trade tradeDetails, decimal sellAmount)
         {
             var portfolio = dbContext.UserPortfolio.Where(o => o.UserId == account.UserId && o.StockId == tradeDetails.StockID).FirstOrDefault();
-
+            bool response = false;
             if (portfolio != null)
             {
                 int remainingStocks = portfolio.StockQty.Value - tradeDetails.EquityQuantity;
                 portfolio.StockQty = remainingStocks;
                 portfolio.IsActive = remainingStocks > 0 ? true : false;
                 portfolio.InvestedAmount = portfolio.InvestedAmount - sellAmount;
+
+                dbContext.SaveChanges();
+                response = true;
             }
-            else
-            {
-                return false;
-            }
-            dbContext.SaveChanges();
-            return true;
+           
+            return response;
         }
         #endregion
 

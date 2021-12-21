@@ -1,3 +1,4 @@
+D:\NAGP\G_UnitTesting\HomeAssignment\eBroker\eBroker.Tests\bin\Debug\netcoreapp3.1\CoverletSourceRootsMapping
 D:\NAGP\G_UnitTesting\HomeAssignment\eBroker\eBroker.Tests\obj\Debug\netcoreapp3.1\eBroker.Tests.csproj.AssemblyReference.cache
 D:\NAGP\G_UnitTesting\HomeAssignment\eBroker\eBroker.Tests\obj\Debug\netcoreapp3.1\eBroker.Tests.AssemblyInfoInputs.cache
 D:\NAGP\G_UnitTesting\HomeAssignment\eBroker\eBroker.Tests\obj\Debug\netcoreapp3.1\eBroker.Tests.AssemblyInfo.cs
