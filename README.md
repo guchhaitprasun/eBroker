@@ -1,9 +1,7 @@
 # eBroker-application
 ### eBroker web API application using c#, dotnet core (3.1 LTS) and SQL Server to explore unit testing using xUnit.
-<br/>
 
 ## Getting Started
----
 Make sure you have [installed](https://dotnet.microsoft.com/en-us/download/dotnet/3.1) .Net Core **version 3.1** and Visual Studio 2019 on your machine and [configured](https://www.microsoft.com/en-in/sql-server/sql-server-downloads) SQL Server 2019.
 
 Before going for the application first let's set up the databse. go to **Database** folder and follow any of the below mentioned option to configure database. 
@@ -16,30 +14,21 @@ After that, you have to open the application `(eBroker.sln)` using Visual Studio
 
 After build executes successfully run the application on **IIS Express** using Visual Studio
 
-<br/>
-
 ## Unit Testing & Code Coverage 
----
 Unit testing for this project is done using [xUnit](https://xunit.net/) & Code covergae is done using [coverlet](https://www.nuget.org/packages/coverlet.msbuild/). To generate the fresh report run **Run** `ReportGenertaor.ps1` script using powershell and it will generate the report and open in your defualt browser. 
 
 Please make sure you have report generator tool already installed. if not install it using pcakge manager console of Visual studio using this command. 
 ```Nuget package manager 
 dotnet tool install -g dotnet-reportgenerator-globaltool
 ```
-<br/>
-
 ## Credentials
----
 Since the application mainly focused on unit testing, Security aspect is somewhat ignored in this project. Following are the minimal credentials that will be handy while testing the api manually.
 
 - EMAIL ADDRESS: [prasun.guchhait@nagp.com]()
 - USER ID: [20210]()
 - DMAT NUMBER: [1234-5678-9012-3456]()
 
-<br/>
-
 ## Business Requirement  
----
 Trading application with users(Trader). trader should be able to do the following tasks
 
 - Buy equity units
@@ -52,10 +41,7 @@ Trading application with users(Trader). trader should be able to do the followin
 - Add Fund
     - Can add funds any time (Above 1L charges 0.05%)
 
-<br/>
-
 ## Application Architecture
----
 The application comprise of 3 layers. 
 
 - **Presentation Layer** comprise of all the API contollers to cater web requests and provide with http responses. 
